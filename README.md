@@ -6,7 +6,7 @@ Adds a nifty Modal Login for WordPress. I didn't like what was available. So I m
 Install
 =======
 
-Pretty simple. Hit the download ZIP button on GitHub and download the files. Extract the zip and drop the folder into /wp-content/plugins/.
+Pretty simple. Hit the download ZIP button on GitHub and fork the files. Extract the zip and drop the folder into /wp-content/plugins/.
 
 Activate the plugin in the admin area of your WordPress install.
 
