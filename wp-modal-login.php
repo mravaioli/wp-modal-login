@@ -1,9 +1,9 @@
 <?php
 	/*
 	Plugin Name: WP Modal Login
-	Plugin URI: http://www.colegeissinger/wp-modal-login
+	Plugin URI: http://wp-modal-login.colegeissinger.com
 	Description: A highly configurable and versatile modal (pop-up) login form.
-	Version: 1.0
+	Version: 1.1
 	Author: Cole Geissinger
 	Author URI: http://www.colegeissinger.com
 	License: GPLv2 or later
@@ -25,13 +25,10 @@
 	Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 	*/
 
-	// Load our widget class
-	include( 'widget/class-login-widget.php' );
-
 
 	// Define the core class
 	class Geissinger_WP_Modal_Login {
-		public $plugin_version = '1.0';
+		public $plugin_version = '1.1';
 
 		/**
 		 * Loads all of our required hooks and filters and other cool doodads.
@@ -40,10 +37,16 @@
 		 * @since 1.0
 		 */
 		public function __construct() {
+			// Load our widget class
+			include( 'widget/class-login-widget.php' );
+
+			// Load our shortcode TinyMCE button
+			include( 'includes/tinymce-shortcode-btn/modal-login-init.php' );
+
 			add_action( 'wp_footer', array( $this, 'login_form' ) ); // Register our source code with the wp_footer().
 			add_action( 'wp_enqueue_scripts', array( $this, 'print_resources' ) ); // Add our JavaScript to the front-end.
 			add_action( 'widgets_init', create_function( '', 'register_widget( "Geissinger_WP_Modal_Login_Widget" );' ) );
-			add_shortcode( 'wpml-modal-login', array( $this, 'modal_login_btn_shortcode' ) ); // Add our shortcode action.
+			add_shortcode( 'wp-modal-login', array( $this, 'modal_login_btn_shortcode' ) ); // Add our shortcode action.
 		}
 
 
@@ -75,7 +78,7 @@
 		 * @since 1.0
 		 */
 		public function login_form() {
-			$rememberme = ! empty( $_POST[ 'rememberme' ] ); ?>
+			$rememberme = ! empty( $_POST['rememberme'] ); ?>
 			<div id="login-box" class="login-popup">
 				<a href="#" class="close-btn"></a>
 
@@ -142,7 +145,7 @@
 
 			// Is the user logged in? If so, serve them the logout button, else we'll show the login button.
 			if ( is_user_logged_in() ) {
-				$link = '<a href="' . esc_url( wp_logout_url( $logout_url ) ) . '" class="login">' . sprintf( sanitize_text_field( '%s' ), $logout_text ) . '</a>';
+				$link = '<a href="' . wp_logout_url( esc_url( $logout_url ) ) . '" class="login">' . sprintf( sanitize_text_field( '%s' ), $logout_text ) . '</a>';
 			} else {
 				$link = '<a href="#login-box" class="login login-window">' . sprintf( sanitize_text_field( '%s' ), $login_text ) . '</a></li>';
 			}
@@ -156,7 +159,7 @@
 			extract( shortcode_atts( array(
 				'login_text'  => 'Login',
 				'logout_text' => 'Logout',
-				'logout_url'  => esc_url( wp_logout_url( home_url() ) ),
+				'logout_url'  => wp_logout_url( esc_url( home_url() ) ),
 			), $atts ) );
 
 			if ( is_user_logged_in() ) {

@@ -12,7 +12,7 @@
 		function Geissinger_WP_Modal_Login_Widget() {
 			$widget_opts = array(
 				'classname'   => 'wpml-widget',
-				'description' => __( 'Display a login/logout link that displays a popup login form', 'geissinger_wpml' ),
+				'description' => __( 'Display a login/logout link that displays a pop-up login form', 'geissinger_wpml' ),
 			);
 
 			$this->WP_Widget( 'Geissinger_WP_Modal_Login_Widget', __( 'WP Modal Login', 'geissinger_wpml' ), $widget_ops );
@@ -35,8 +35,6 @@
 			$logout_text  = empty( $instance['logout-text'] )  ? '' : apply_filters( 'logout-text', $instance['logout-text'] );
 			$logout_url   = empty( $instance['logout-url'] )   ? '' : apply_filters( 'logout-url', $instance['logout-url'] );
 
-			$modal = New Geissinger_WP_Modal_Login();
-
 			echo $before_widget;
 
 			if ( ! empty( $instance['widget-title'] ) ) {
@@ -47,7 +45,7 @@
 				echo $args['after_title'];
 			}
 
-			echo $modal->modal_login_btn( $login_text, $logout_text, $logout_url );
+			echo Geissinger_WP_Modal_Login::modal_login_btn( $login_text, $logout_text, $logout_url );
 
 			echo $after_widget;
 		}
@@ -62,19 +60,12 @@
 		 * @since 1.0
 		 */
 		function update( $new_instance, $old_instance ) {
-			$allowed_html = array(
-				'br' 		=> array(),
-				'em' 		=> array(),
-				'i' 		=> array(),
-				'strong' => array(),
-				'b' 		=> array(),
-			);
 			$instance = $old_instance;
 
-			$instance['widget-title'] = wp_kses( $new_instance['widget-title'] );
-			$instance['login-text']   = wp_kses( $new_instance['login-text'] );
-			$instance['logout-text']  = wp_kses( $new_instance['logout-text'] );
-			$instance['logout-url']   = esc_url_raw( $new_instance['logout-url'] );
+			$instance['widget-title'] = strip_tags( stripslashes( $new_instance['widget-title'] ) );
+			$instance['login-text']   = strip_tags( stripslashes( $new_instance['login-text'] ) );
+			$instance['logout-text']  = strip_tags( stripslashes( $new_instance['logout-text'] ) );
+			$instance['logout-url']   = strip_tags( stripslashes( $new_instance['logout-url'] ) );
 
 			return $instance;
 		}
