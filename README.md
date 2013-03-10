@@ -1,46 +1,52 @@
 WordPress Modal Login!
 ==============
 
-Adds a nifty Modal Login for WordPress. I didn't like what was available. So I made my own. Feel free to fork and rip apart. I'll be adding more options like different login styles and other cool stuff.
+Creates an easy to use login form that will display a pop-up window (modal window) for easy login from the front-end of any website.
+
+This is easily managed using a custom widget, shortcode generator or you can use PHP to insert this plugin into any custom area of your theme.
 
 Install
 =======
 
-Pretty simple. Hit the download ZIP button on GitHub and fork the files. Extract the zip and drop the folder into /wp-content/plugins/.
+1. Upload `wp-modal-login` to the `/wp-content/plugins/` directory
+2. Activate the plugin through the 'Plugins' menu in WordPress
 
-Activate the plugin in the admin area of your WordPress install.
+OR
 
-Usage
-=====
-
-You have two options at the moment, the built in Widget or add straight to your theme with the PHP function.
-
+Download it straight from the WordPress Plugin repository! http://wordpress.org/extend/plugins/wp-modal-login/
 
 WIDGET
--------
-
+------
 Navigate to Appearance > Widgets in the admin area. Locate the WP Modal Login widget in the Available Widgets section and drag and drop into a widgetized area for your currently active theme.
 
-You have four options in the widget window, <em>Widget Title</em>, <em>Login Text</em>, <em>Logout Text</em> and <em>Logout URL</em>.<br />
-<strong>WIDGET TITLE</strong>: Add a title to the widget. (optional)<br />
-<strong>LOGIN TEXT</strong>: Set the text for the login link. Defaults to "<em>Login</em>".<br />
-<strong>LOGOUT TEXT</strong>: Set the text for the logout link. Defaults to "Logout</em>".<br />
-<strong>LOGOUT URL</strong>: Set the logout URL redirection. Defaults to the <em>home_url()</em> http://codex.wordpress.org/Function_Reference/home_url
+You have four options in the widget window, Widget Title, Login Text, Logout Text and Logout URL.
+**WIDGET TITLE**: Add a title to the widget. (optional)
+**LOGIN TEXT**: Set the text for the login link. Defaults to "Login".
+**LOGOUT TEXT**: Set the text for the logout link. Defaults to "Logout".
+**LOGOUT URL**: Set the logout URL redirection. Defaults to the home_url() http://codex.wordpress.org/Function_Reference/home_url
+
+SHORTCODE
+---------
+You can use the shortcode in any edit screen for posts, pages or custom post types. In any post edit screen, you will see a "lock" icon, clicking this will invoke a modal window where you can add custom login text, logout text and/or logout url (used for redirecting users after logout). Click the "Insert Modal Login Shortcode".
+
+ADD TO THEME WITH PHP
+---------------------
+You can also use this plugin inside any part of your theme or plugin if you wish using the code sample below.
+
+`<?php $modal_login = new Geissinger_WP_Modal_Login;`
+`echo $modal_login; ?>`
 
 
-PHP FUNCTION
-------------
+Changelog
+=========
 
-You may use the PHP function used by the Widget in any location in your theme. Just ensure the plugin is activated to use.
-
-Example:<br />
-<em>$modal_login = new Geissinger_WP_Modal_Login;<br />
-echo $modal_login;</em>
-
+1.1
+---
+* Added Shortcode generator to TinyMCE visual editor.
+* Fixed bug in widget that caused a fatal error in the front-end.
 
 To Do
 =====
 
-&bull; Add Shortcode with button in editor.<br />
 &bull; Add different modal login styles/layouts.<br />
 &bull; Add area for custom styles.<br />
