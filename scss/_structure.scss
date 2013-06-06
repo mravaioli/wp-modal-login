@@ -1,0 +1,90 @@
+/*** Main background overlay ***/
+#overlay {
+	display:none;
+	background:$default_dark;
+	height:100%;
+	left:0;
+	opacity:.8;
+	position:fixed;
+	top:0;
+	width:100%;
+	z-index:9999999;
+}
+
+/*** Modal Window - Set the element to display:none and fade in with jQuery ***/
+.login-popup {
+	display:none;
+	font-size:$base_font_size;
+	float:left;
+	width:25%;
+	position:fixed;
+	top:50%;
+	left:50%;
+	z-index:999999999;
+	* {
+		-moz-box-sizing:border-box;
+		-webkit-box-sizing:border-box;
+		box-sizing:border-box;
+	}
+	.close-btn {
+		position:absolute;
+		top:3px;
+		right:3px;
+		text-decoration:none;
+		&:before {
+			font-family:'iconic';
+			speak:none;
+			font-style:normal;
+			font-weight:normal;
+			line-height:1;
+			-webkit-font-smoothing:antialiased;
+			content:"\22";
+		}
+	}
+	.hide-login {
+		display:none;
+	}
+	.inline {
+		display:inline;
+	}
+}
+
+/*** Login Form ***/
+#form {
+	p.message { display:none; }
+	.input {
+		width:100%;
+		outline:0;
+	}
+	.submit {
+		float:right;
+		margin:0;
+	}
+	#forgetmenot {
+		cursor:pointer;
+	}
+}
+#additional-settings {
+	position:absolute;
+	bottom:-20px;
+}
+
+
+// modern clearfix.
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/*** Font Icons! ***/
+@font-face {
+	font-family:'iconic';
+	src:url( '../fonts/iconic.eot' );
+	src:url( '../fonts/iconic.eot?#iefix' ) format('embedded-opentype' ),
+		 url( '../fonts/iconic.woff' ) format( 'woff' ),
+		 url( '../fonts/iconic.ttf' ) format( 'truetype' ),
+		 url( '../fonts/iconic.svg#iconic' ) format( 'svg' );
+	font-weight:normal;
+	font-style:normal;
+}

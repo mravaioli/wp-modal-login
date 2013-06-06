@@ -1,0 +1,115 @@
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "compass/css3/text-shadow";
+@import "compass/css3/transition";
+
+// Load some variables, and like... yeah :/
+@import "variables";
+
+.login-popup {
+	background:$default_light;
+	color:$default_text;
+	padding:$spacing;
+	min-width:332px;
+	@include border-radius();
+	@include box-shadow(0 0 10px rgba(0,0,0,.7));
+	h2 {
+		color:$default_highlight;
+		text-transform:uppercase;
+		font-weight:400;
+		font-size:1.7375em;
+		text-align:center;
+		margin-bottom:$spacing / 2;
+		text-rendering:optimizelegibility;
+	}
+	.close-btn {
+		font-size:1.2em;
+		color:#000;
+		color:rgba( 0,0,0,.5 );
+		@include transition( color, .7s );
+		&:hover {
+			color:$default_highlight;
+		}
+	}
+	.message {
+		color:#fff;
+		margin:0 0 10px;
+		padding:10px;
+		@include text-shadow(0 1px 0 rgba(0,0,0,.1));
+		@include border-radius();
+		&.success {
+			background:#609450;
+		}
+		&.error {
+			background:#BD362F;
+		}
+		&.notice {
+			background:#FAA732;
+		}
+	}
+}
+
+/*** Login Form ***/
+#form {
+	p {
+		padding:0;
+		margin:0 0 10px;
+	}
+	.field-titles {
+		text-transform:uppercase;
+		font-size:.8125em;
+		line-height:1.538461538em;
+		font-weight:bold;
+	}
+	.input {
+		font-size:1.230769231em;
+		padding:5px;
+		border:1px solid #E6E6E6;
+		background:$default_light;
+		@include border-radius();
+		@include box-shadow( inset 0 1px 2px rgba( 0,0,0,.2 ) );
+		@include transition( border, .7s );
+		&:hover, &:focus {
+			border:1px solid $default_highlight;
+		}
+	}
+	#forgetmenot {
+		position:relative;
+		top:13px;
+		float:left;
+		margin:0;
+		label {
+			font-size:.8em;
+			cursor:pointer;
+			@include transition( color, .7 );
+			&:hover {
+				color:$default_highlight;
+			}
+		}
+	}
+	.submit {
+		.button {
+			background:#029EC6;
+			background:$default_highlight_rgba;
+			color:$default_light;
+			font-size:1em;
+			outline:0;
+			@include transition( background, .2s );
+			&:hover {
+				background:$default_highlight;
+			}
+		}
+	}
+}
+#additional-settings {
+	font-size:.9em;
+	a {
+		color:$default_highlight;
+		&:hover {
+			opacity:.8;
+		}
+	}
+}
+
+
+

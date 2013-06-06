@@ -1,0 +1,127 @@
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "compass/css3/text-shadow";
+@import "compass/css3/transition";
+
+
+// Load some variables, and like... yeah :/
+@import "variables";
+
+
+.login-popup {
+	background:$default_light;
+	color:$theme_1_text;
+	font-size:$base_font_size;
+	border-color:$default_light;
+	min-width:348px;
+	@include border-radius(2px);
+	@include box-shadow(0 0 10px #000);
+	&:after {
+		content:'';
+		position:absolute;
+		top:100%;
+		right:20px;
+		border-top:20px solid black;
+		border-top-color:inherit;
+		border-left:20px solid transparent;
+		border-right:20px solid transparent;
+	}
+	h2 {
+		text-align:center;
+		font-size:2em;
+		background:$theme_1_highlight;
+		color:$default_light;
+		padding:$spacing - 10px;
+		margin-bottom:0;
+		text-transform:capitalize;
+		@include text-shadow(1px 1px 0 rgba(0,0,0,.2));
+		@include border-radius(2px 2px 0 0);
+	}
+	.close-btn {
+		font-size:1em;
+		color:$default_light;
+		background:$theme_1_text;
+		padding:3px;
+		top:-12px;
+		right:-11px;
+		@include border-radius(20px);
+		@include transition(background, .7s);
+		&:hover {
+			background:#f00;
+		}
+	}
+	.message {
+		color:#fff;
+		margin:($spacing - 10px) $spacing 0;
+		padding:$spacing - 10px;
+		font-size:.8em;
+		@include text-shadow(0 0 5px rgba(0,0,0,.8));
+		&.success {
+			border-left:4px solid #609450;
+			background:#609450;
+			background:rgba(96,148,80,.6);
+		}
+		&.error {
+			border-left:4px solid #BD362F;
+			background:#BD362F;
+			background:rgba(189,54,47,.6);
+		}
+		&.notice {
+			border-left:4px solid #FAA732;
+			background:#FAA73C;
+			background:rgba(250,167,60,.6);
+		}
+	}
+}
+
+/*** Login Form ***/
+#form {
+	padding:$spacing;
+	p {
+		padding:0;
+		margin:0 0 10px;
+	}
+	.input {
+		background:$default_light;
+		font-size:1em;
+		color:#555;
+		@include transition(border, .7s);
+		&:hover, &:focus {
+			border:1px solid $theme_1_highlight;
+			@include box-shadow(0 0 10px $theme_1_highlight_rgba);
+		}
+	}
+	#forgetmenot {
+		float:left;
+		label, input {
+			cursor:pointer;
+		}
+		.forgetmenot-label {
+			font-size:.9em;
+		}
+	}
+	.submit {
+		#wp-submit {
+			font-size:1.1em;
+			border:none;
+			background:$theme_1_highlight;
+			color:$default_light;
+			opacity:.8;
+			border:1px solid #81a864;
+			@include transition(all, .7s);
+			&:hover {
+				opacity:1;
+			}
+		}
+	}
+}
+#additional-settings {
+	font-size:.8em;
+	a {
+		color:#ccc;
+		@include transition(color, .7s);
+		&:hover {
+			color:$theme_1_highlight_rgba;
+		}
+	}
+}

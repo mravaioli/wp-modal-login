@@ -1,0 +1,135 @@
+@import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
+@import "compass/css3/text-shadow";
+@import "compass/css3/transition";
+
+
+// Load some variables, and like... yeah :/
+@import "variables";
+
+/*** Main background overlay ***/
+#overlay {
+	background:#666;
+}
+
+/*** Modal Window ***/
+.login-popup {
+	background:#fff;
+	padding:$spacing;
+	border:1px solid #282828;
+	border-top-width:4px;
+	min-width:300px;
+	@include box-shadow(0 0 10px rgba(0,0,0,.5));
+	h2 {
+		position:absolute;
+		top:-44px;
+		left:-3px;
+		font-size:2em;
+		color:#fff;
+		font-weight:normal;
+		text-transform:capitalize;
+		@include text-shadow(0 0 10px rgba(0,0,0,.7));
+	}
+	.close-btn {
+		top:-30px;
+		right:0;
+		color:#eee;
+		@include transition(color, .7s);
+		&:before {
+			font-family:inherit;
+			content:"Close";
+		}
+		&:hover {
+			color:#f53d54;
+		}
+	}
+	.message {
+		color:#fff;
+		color:rgba(255,255,255,.95);
+		padding:10px;
+		margin-bottom:10px;
+		&.success {
+			border-top:2px solid #009600;
+			background:#009600;
+			background:rgba(0,150,0,.5);
+		}
+		&.error {
+			border-top:2px solid #CE4B27;
+			background:#E6A492;
+			background:rgba(206,75,39,.5);
+		}
+		&.notice {
+			border-top:2px solid #E88A05;
+			background:#F3C481;
+			background:rgba(232,138,5,.5);
+		}
+	}
+}
+
+/*** Login Form ***/
+#form {
+	p {
+		&:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+	}
+	label {
+		float:left;
+		width:30%;
+		margin:11px 0;
+	}
+	.input {
+		float:right;
+		width:70%;
+		font-size:1em;
+		border-color:#e2e2e2;
+		@include border-radius(1px);
+		@include transition(border-color, .7s);
+		&:hover, &:focus {
+			border-color:#989898;
+		}
+	}
+	#forgetmenot {
+		margin:10px 0;
+		label {
+			width:100%;
+			float:none;
+			font-size:.9em;
+		}
+		.forgetmenot-label { }
+	}
+	.submit {
+		float:none;
+		margin-top:10px;
+		#wp-submit, #user-submit {
+			width:100%;
+			font-size:1.2em;
+			background:#282828;
+			background:rgba(40,40,40,.8);
+			border:1px solid #282828;
+			color:#fff;
+			@include transition(background, .7s);
+			&:hover {
+				background:#282828;
+			}
+		}
+	}
+}
+#additional-settings {
+	position:relative;
+	bottom:0;
+	text-align:center;
+	margin:13px 0 0;
+	font-size:.8em;
+	color:rgba(40,40,40,.5);
+	a {
+		color:rgba(40,40,40,.5);
+		text-decoration:none;
+		@include transition(color, .7s);
+		&:hover {
+			color:#282828;
+		}
+	}
+}

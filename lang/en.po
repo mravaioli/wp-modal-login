@@ -1,0 +1,161 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Modal Login\n"
+"POT-Creation-Date: 2013-04-23 23:57-0800\n"
+"PO-Revision-Date: 2013-04-23 23:57-0800\n"
+"Last-Translator: Cole Geissinger <cole@colegeissinger.com>\n"
+"Language-Team: Cole Geissinger <cole@colegeissinger.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../includes/class-wp-modal-login.php:80
+msgid "checking credentials..."
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:112
+msgid "Wrong Username or Password!"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:117
+msgid "Login Successful!"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:181
+#: ../includes/class-wp-modal-login.php:380
+msgid "Login"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:190
+#: ../includes/class-wp-modal-login.php:231
+msgid "Username"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:195
+#: ../includes/class-wp-modal-login.php:236
+msgid "Password"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:222
+msgid "register"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:241
+msgid "Email"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:266
+msgid "Forgotten Password?"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:275
+msgid "Username or Email"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:317
+#: ../includes/class-wp-modal-login.php:321
+msgid "Register"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:323
+msgid "Lost your password?"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:360
+msgid "View Admin"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:381
+msgid "Logout"
+msgstr ""
+
+#: ../includes/wpml-admin-page.php:17 ../widget/class-login-widget.php:24
+msgid "WP Modal Login"
+msgstr ""
+
+#: ../includes/wpml-admin-page.php:33
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: ../includes/wpml-admin-page.php:37
+msgid "WordPress Modal Login Options"
+msgstr ""
+
+#: ../includes/wpml-admin-page.php:68
+msgid "Modal Theme"
+msgstr ""
+
+#: ../includes/wpml-admin-page.php:69
+msgid "Widget Options"
+msgstr ""
+
+#: ../includes/wpml-admin-page.php:78
+msgid ""
+"Enable or disable the shortcode button found with the page & post editor."
+msgstr ""
+
+#: ../includes/wpml-admin-page.php:90
+msgid "Select a new theme for your modal login window."
+msgstr ""
+
+#: ../includes/wpml-admin-page.php:99
+msgid "Enable or disable the widget found in Appearance > Widgets."
+msgstr ""
+
+#: ../includes/wpml-admin-page.php:118
+msgid "Customize the look and feel of the modal login window and other options"
+msgstr ""
+
+#: ../includes/wpml-admin-page.php:130
+msgid "Customize the options for the Widget"
+msgstr ""
+
+#: ../includes/tinymce-shortcode-btn/popup.php:14
+msgid "Oops! You can't call this page directly."
+msgstr ""
+
+#: ../includes/tinymce-shortcode-btn/popup.php:25
+msgid "Add Modal Login Shortcode"
+msgstr ""
+
+#: ../includes/tinymce-shortcode-btn/popup.php:46
+msgid "Login Text"
+msgstr ""
+
+#: ../includes/tinymce-shortcode-btn/popup.php:54
+msgid "Logout Text"
+msgstr ""
+
+#: ../includes/tinymce-shortcode-btn/popup.php:62
+msgid "Logout Redirect URL"
+msgstr ""
+
+#: ../widget/class-login-widget.php:21
+msgid "Display a login/logout link that displays a pop-up login form"
+msgstr ""
+
+#: ../widget/views/form.php:2
+msgid "Title:"
+msgstr ""
+
+#: ../widget/views/form.php:7
+msgid "Login Text:"
+msgstr ""
+
+#: ../widget/views/form.php:12
+msgid "Logout Text:"
+msgstr ""
+
+#: ../widget/views/form.php:17
+msgid "Logout Redirection URL:"
+msgstr ""
+
+#: ../widget/views/form.php:22
+msgid "Show Admin Link:"
+msgstr ""
