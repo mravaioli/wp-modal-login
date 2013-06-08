@@ -91,7 +91,7 @@
 			'id' 				=> 'display-shortcode-btn',
 			'class' 			=> '',
 			'value' 		   => 'true',
-			'label' 			=> __( 'Enable the shortcode button found with the page & post editor.', 'getissinger_wpml' ),
+			'label' 			=> __( 'Enable the shortcode button found with the page & post editor.', 'geissinger_wpml' ),
 		) );
 		add_settings_field( 'modal_theme', 'Select A Theme', 'geissinger_settings_field_select', 'geissinger_wpml_settings_options', 'wpml_settings_section', array(
 			'options-name' => $option_name,
@@ -118,6 +118,13 @@
 			'class'			=> '',
 			'value'			=> '',
 			'label'			=> __( 'Add your custom CSS code.' ),
+		) );
+		add_settings_field( 'remove_reg', 'Disable Register Button', 'geissinger_settings_field_checkbox', 'geissinger_wpml_settings_options', 'wpml_settings_section', array(
+			'options-name' => $option_name,
+			'id'				=> 'remove-reg',
+			'class'			=> '',
+			'value'			=> '',
+			'label'			=> __( 'Remove the "Register" link in the modal window. (Useful if you want to use a separate registration page)' ),
 		) );
 
 

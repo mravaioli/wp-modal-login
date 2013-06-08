@@ -27,27 +27,27 @@
 			load_plugin_textdomain( 'geissinger_wpml', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
 
 			// Register our source code with the wp_footer().
-			add_action( 'wp_footer', array( $this, 'login_form' ) );
+			add_action( 'wp_footer', array( &$this, 'login_form' ) );
 
 			// Add our JavaScript and Stylesheets to the front-end.
-			add_action( 'wp_enqueue_scripts', array( $this, 'print_resources' ) );
+			add_action( 'wp_enqueue_scripts', array( &$this, 'print_resources' ) );
 
 			// Add the users custom CSS if they wish to add any.
 			if ( isset( $wpml_settings['custom-css'] ) )
-				add_action( 'wp_head', array( $this, 'print_custom_css' ) );
+				add_action( 'wp_head', array( &$this, 'print_custom_css' ) );
 
 			// Add our lost password field.
-			add_action( 'after_wpml_form', array( $this, 'additional_options' ) );
+			add_action( 'after_wpml_form', array( &$this, 'additional_options' ) );
 
 			// Add our shortcode action.
-			add_shortcode( 'wp-modal-login', array( $this, 'modal_login_btn_shortcode' ) );
+			add_shortcode( 'wp-modal-login', array( &$this, 'modal_login_btn_shortcode' ) );
 
 			// Register our widget but only if the user has allowed the widget option.
 			if ( isset( $wpml_settings['display-widget'] ) )
 				add_action( 'widgets_init', create_function( '', 'register_widget( "Geissinger_WP_Modal_Login_Widget" );' ) );
 
 			// Allow us to run Ajax on the login.
-			add_action( 'wp_ajax_nopriv_ajaxlogin', array( $this, 'ajax_login' ) );
+			add_action( 'wp_ajax_nopriv_ajaxlogin', array( &$this, 'ajax_login' ) );
 		}
 
 
@@ -80,7 +80,7 @@
 			// Only run our ajax stuff when the user isn't logged in.
 			if ( ! is_user_logged_in() ) {
 				wp_localize_script( 'wpml-script', 'wpml_script', array(
-					'ajaxurl' 		  => admin_url( 'admin-ajax.php' ),
+					'ajax' 		  => admin_url( 'admin-ajax.php' ),
 					'redirecturl' 	  => $_SERVER['REQUEST_URI'],
 					'loadingmessage' => __( 'checking credentials...' ),
 				) );
@@ -118,10 +118,10 @@
 			$data = array();
 
 			// Check that we are submitting the login form
-			if ( isset( $_POST['login'] ) )  {
-				$data['user_login'] 	  = sanitize_user( $_POST['username'] );
-				$data['user_password'] = esc_attr( $_POST['password'] );
-				$data['rememberme'] 	  = $_POST['rememberme'];
+			if ( isset( $_REQUEST['login'] ) )  {
+				$data['user_login'] 	  = sanitize_user( $_REQUEST['username'] );
+				$data['user_password'] = esc_attr( $_REQUEST['password'] );
+				$data['rememberme'] 	  = $_REQUEST['rememberme'];
 				$user_login 			  = wp_signon( $data, false );
 
 				// Check the results of our login and provide the needed feedback
@@ -139,10 +139,10 @@
 			}
 
 			// Check if we are submitting the register form
-			elseif ( isset( $_POST['register'] ) ) {
+			elseif ( isset( $_REQUEST['register'] ) ) {
 				$user_data = array(
-					'user_login' => sanitize_user( $_POST['username'] ),
-					'user_email' => sanitize_email( $_POST['email'] ),
+					'user_login' => sanitize_user( $_REQUEST['username'] ),
+					'user_email' => sanitize_email( $_REQUEST['email'] ),
 				);
 				$user_register = $this->register_new_user( $user_data['user_login'], $user_data['user_email'] );
 
@@ -161,13 +161,13 @@
 			}
 
 			// Check if we are submitting the forgotten pwd form
-			elseif ( isset( $_POST['forgotten'] ) ) {
+			elseif ( isset( $_REQUEST['forgotten'] ) ) {
 
 				// Check if we are sending an email or username and sanitize it appropriately
-				if ( is_email( $_POST['username'] ) ) {
-					$username = sanitize_email( $_POST['username'] );
+				if ( is_email( $_REQUEST['username'] ) ) {
+					$username = sanitize_email( $_REQUEST['username'] );
 				} else {
-					$username = sanitize_user( $_POST['username'] );
+					$username = sanitize_user( $_REQUEST['username'] );
 				}
 
 				// Send our information
@@ -489,12 +489,17 @@
 		 * @since 2.0
 		 */
 		public function additional_options() {
+			global $wpml_settings;
+
 			$multisite_reg = get_site_option( 'registration' );
 
 			echo '<div id="additional-settings">';
 
-			if ( (get_option( 'users_can_register' ) && ! is_multisite() ) || ( $multisite_reg == 'all' || $multisite_reg == 'blog' || $multisite_reg == 'user' ) )
-				echo '<a href="#register" class="wpml-nav">' . __( 'Register', 'geissinger_wpml' ) . '</a> | ';
+			// Check if we have disabled this via the admin options first.
+			if ( ! isset( $wpml_settings['remove-reg'] ) ) {
+				if ( (get_option( 'users_can_register' ) && ! is_multisite() ) || ( $multisite_reg == 'all' || $multisite_reg == 'blog' || $multisite_reg == 'user' ) )
+					echo '<a href="#register" class="wpml-nav">' . __( 'Register', 'geissinger_wpml' ) . '</a> | ';
+			}
 
 			echo '<a href="#forgotten" class="wpml-nav">' . __( 'Lost your password?', 'geissinger_wpml' ) . '</a>';
 
@@ -534,7 +539,7 @@
 
 			// Is the user logged in? If so, serve them the logout button, else we'll show the login button.
 			if ( is_user_logged_in() ) {
-				$link = '<a href="' . wp_logout_url( esc_url( $logout_url ) ) . '" class="login">' . sprintf( sanitize_text_field( '%s' ), $logout_text ) . '</a>';
+				$link = '<a href="' . wp_logout_url( $logout_url ) . '" class="login">' . sprintf( sanitize_text_field( '%s' ), $logout_text ) . '</a>';
 				if ( $show_admin )
 					$link .= ' | <a href="' . esc_url( admin_url() ) . '">' . __( 'View Admin', 'geissinger_wpml' ) . '</a>';
 			} else {
@@ -557,7 +562,7 @@
 			extract( shortcode_atts( array(
 				'login_text'  => __( 'Login', 'geissinger_wpml' ),
 				'logout_text' => __( 'Logout', 'geissinger_wpml' ),
-				'logout_url'  => wp_logout_url( esc_url( home_url() ) ),
+				'logout_url'  => wp_logout_url( home_url() ),
 			), $atts ) );
 
 			if ( is_user_logged_in() ) {

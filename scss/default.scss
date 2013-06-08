@@ -9,8 +9,8 @@
 .login-popup {
 	background:$default_light;
 	color:$default_text;
-	padding:$spacing;
-	min-width:332px;
+	padding:($spacing - 10) $spacing $spacing;
+	min-width:357px;
 	@include border-radius();
 	@include box-shadow(0 0 10px rgba(0,0,0,.7));
 	h2 {
@@ -23,6 +23,9 @@
 		text-rendering:optimizelegibility;
 	}
 	.close-btn {
+		position:absolute;
+		top:0;
+		right:3px;
 		font-size:1.2em;
 		color:#000;
 		color:rgba( 0,0,0,.5 );
@@ -75,11 +78,12 @@
 	}
 	#forgetmenot {
 		position:relative;
-		top:13px;
 		float:left;
 		margin:0;
 		label {
-			font-size:.8em;
+			position:relative;
+			top:5px;
+			font-size:1.05em;
 			cursor:pointer;
 			@include transition( color, .7 );
 			&:hover {
@@ -94,7 +98,10 @@
 			color:$default_light;
 			font-size:1em;
 			outline:0;
+			border:none;
+			padding:7px 18px;
 			@include transition( background, .2s );
+			@include border-radius( 3px );
 			&:hover {
 				background:$default_highlight;
 			}
@@ -102,7 +109,9 @@
 	}
 }
 #additional-settings {
-	font-size:.9em;
+	font-size:.85em;
+	position:absolute;
+	bottom:-25px;
 	a {
 		color:$default_highlight;
 		&:hover {

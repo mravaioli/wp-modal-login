@@ -67,6 +67,13 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 
 Changelog
 =========
+2.0.2
+-----
+* Fixed issue of login when using alongside other Ajax plugins.
+* Removed esc_url() from the wp_logout_url() as it created too much sanitization and caused logout issues.
+* Updated mislabeled text domain in wpml-admin-page.php and updated en.po.
+* Added option to disable the "Register" button in the modal window if using another registration system.
+
 2.0.1
 -----
 * Moved admin page to be a submenu under Settings.

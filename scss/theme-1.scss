@@ -31,19 +31,23 @@
 		font-size:2em;
 		background:$theme_1_highlight;
 		color:$default_light;
-		padding:$spacing - 10px;
+		padding:0;
+		margin:inherit;
 		margin-bottom:0;
 		text-transform:capitalize;
+		letter-spacing:.06em;
 		@include text-shadow(1px 1px 0 rgba(0,0,0,.2));
 		@include border-radius(2px 2px 0 0);
 	}
 	.close-btn {
-		font-size:1em;
-		color:$default_light;
-		background:$theme_1_text;
-		padding:3px;
+		position:absolute;
 		top:-12px;
 		right:-11px;
+		font-size:1em;
+		line-height:1em;
+		color:$default_light;
+		background:$theme_1_text;
+		padding:5px;
 		@include border-radius(20px);
 		@include transition(background, .7s);
 		&:hover {
@@ -81,10 +85,12 @@
 		padding:0;
 		margin:0 0 10px;
 	}
+	label { font-size:1.25em; }
 	.input {
 		background:$default_light;
 		font-size:1em;
 		color:#555;
+		padding:5px;
 		@include transition(border, .7s);
 		&:hover, &:focus {
 			border:1px solid $theme_1_highlight;
@@ -97,17 +103,18 @@
 			cursor:pointer;
 		}
 		.forgetmenot-label {
-			font-size:.9em;
+			font-size:.95em;
 		}
 	}
 	.submit {
-		#wp-submit {
-			font-size:1.1em;
+		.button-primary {
+			font-size:1.2em;
 			border:none;
 			background:$theme_1_highlight;
 			color:$default_light;
-			opacity:.8;
+			opacity:.9;
 			border:1px solid #81a864;
+			padding:4px 13px;
 			@include transition(all, .7s);
 			&:hover {
 				opacity:1;
@@ -116,7 +123,9 @@
 	}
 }
 #additional-settings {
-	font-size:.8em;
+	position:absolute;
+	bottom:-25px;
+	font-size:.9em;
 	a {
 		color:#ccc;
 		@include transition(color, .7s);

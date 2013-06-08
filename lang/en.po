@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Modal Login\n"
-"POT-Creation-Date: 2013-04-23 23:57-0800\n"
-"PO-Revision-Date: 2013-04-23 23:57-0800\n"
+"POT-Creation-Date: 2013-06-07 22:46-0800\n"
+"PO-Revision-Date: 2013-06-07 22:46-0800\n"
 "Last-Translator: Cole Geissinger <cole@colegeissinger.com>\n"
 "Language-Team: Cole Geissinger <cole@colegeissinger.com>\n"
 "Language: en_US\n"
@@ -15,104 +15,201 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../includes/class-wp-modal-login.php:80
+#: ../includes/class-wp-modal-login.php:85
 msgid "checking credentials..."
 msgstr ""
 
-#: ../includes/class-wp-modal-login.php:112
+#: ../includes/class-wp-modal-login.php:131
 msgid "Wrong Username or Password!"
 msgstr ""
 
-#: ../includes/class-wp-modal-login.php:117
+#: ../includes/class-wp-modal-login.php:136
 msgid "Login Successful!"
 msgstr ""
 
-#: ../includes/class-wp-modal-login.php:181
-#: ../includes/class-wp-modal-login.php:380
-msgid "Login"
+#: ../includes/class-wp-modal-login.php:158
+msgid "Registration complete. Please check your e-mail."
 msgstr ""
 
-#: ../includes/class-wp-modal-login.php:190
-#: ../includes/class-wp-modal-login.php:231
-msgid "Username"
+#: ../includes/class-wp-modal-login.php:185
+msgid "Password Reset. Please check your email."
 msgstr ""
 
-#: ../includes/class-wp-modal-login.php:195
-#: ../includes/class-wp-modal-login.php:236
-msgid "Password"
+#: ../includes/class-wp-modal-login.php:210
+msgid "Please enter a username."
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:212
+msgid ""
+"This username is invalid because it uses illegal characters. Please enter a "
+"valid username."
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:215
+msgid "This username is already registered. Please choose another one."
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:220
+msgid "Please type your e-mail address."
 msgstr ""
 
 #: ../includes/class-wp-modal-login.php:222
+msgid "The email address isn't correct."
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:225
+msgid "This email is already registered, please choose another one."
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:237
+msgid "Couldn't register you... please contact the site administrator"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:264
+msgid "Please enter a username or e-mail address."
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:268
+msgid "There is no user registered with that email address."
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:280
+msgid "Invalid username or e-mail."
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:294
+msgid "Password reset is not allowed for this user"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:306
+msgid "Someone requested that the password be reset for the following account:"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:308
+#, php-format
+msgid "Username: %s"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:309
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:310
+msgid "To reset your password, visit the following address:"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:320
+#, php-format
+msgid "[%s] Password Reset"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:325
+msgid ""
+"The e-mail could not be sent. Possible reason: your host may have disabled "
+"the mail() function."
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:365
+#: ../includes/class-wp-modal-login.php:520
+#: ../includes/class-wp-modal-login.php:563
+msgid "Login"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:374
+#: ../includes/class-wp-modal-login.php:416
+msgid "Username"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:379
+msgid "Password"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:407
 msgid "register"
 msgstr ""
 
-#: ../includes/class-wp-modal-login.php:241
+#: ../includes/class-wp-modal-login.php:421
 msgid "Email"
 msgstr ""
 
-#: ../includes/class-wp-modal-login.php:266
+#: ../includes/class-wp-modal-login.php:446
 msgid "Forgotten Password?"
 msgstr ""
 
-#: ../includes/class-wp-modal-login.php:275
+#: ../includes/class-wp-modal-login.php:455
 msgid "Username or Email"
 msgstr ""
 
-#: ../includes/class-wp-modal-login.php:317
-#: ../includes/class-wp-modal-login.php:321
+#: ../includes/class-wp-modal-login.php:501
 msgid "Register"
 msgstr ""
 
-#: ../includes/class-wp-modal-login.php:323
+#: ../includes/class-wp-modal-login.php:504
 msgid "Lost your password?"
 msgstr ""
 
-#: ../includes/class-wp-modal-login.php:360
+#: ../includes/class-wp-modal-login.php:544
 msgid "View Admin"
 msgstr ""
 
-#: ../includes/class-wp-modal-login.php:381
+#: ../includes/class-wp-modal-login.php:564
 msgid "Logout"
 msgstr ""
 
-#: ../includes/wpml-admin-page.php:17 ../widget/class-login-widget.php:24
+#: ../includes/wpml-admin-page.php:31 ../widget/class-login-widget.php:24
 msgid "WP Modal Login"
 msgstr ""
 
-#: ../includes/wpml-admin-page.php:33
+#: ../includes/wpml-admin-page.php:49
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: ../includes/wpml-admin-page.php:37
+#: ../includes/wpml-admin-page.php:53
 msgid "WordPress Modal Login Options"
 msgstr ""
 
-#: ../includes/wpml-admin-page.php:68
+#: ../includes/wpml-admin-page.php:84
 msgid "Modal Theme"
 msgstr ""
 
-#: ../includes/wpml-admin-page.php:69
+#: ../includes/wpml-admin-page.php:85
 msgid "Widget Options"
 msgstr ""
 
-#: ../includes/wpml-admin-page.php:78
+#: ../includes/wpml-admin-page.php:94
+msgid "Enable the shortcode button found with the page & post editor."
+msgstr ""
+
+#: ../includes/wpml-admin-page.php:106
 msgid ""
-"Enable or disable the shortcode button found with the page & post editor."
+"Select a new theme for your modal login window. You may choose to load no "
+"theme and load in your own custom CSS styles if you wish."
 msgstr ""
 
-#: ../includes/wpml-admin-page.php:90
-msgid "Select a new theme for your modal login window."
+#: ../includes/wpml-admin-page.php:113
+msgid ""
+"Add custom CSS if you wish to over ride any styles in the selected theme."
 msgstr ""
 
-#: ../includes/wpml-admin-page.php:99
-msgid "Enable or disable the widget found in Appearance > Widgets."
+#: ../includes/wpml-admin-page.php:120
+msgid "Add your custom CSS code."
 msgstr ""
 
-#: ../includes/wpml-admin-page.php:118
+#: ../includes/wpml-admin-page.php:127
+msgid ""
+"Remove the \"Register\" link in the modal window. (Useful if you want to use "
+"a separate registration page)"
+msgstr ""
+
+#: ../includes/wpml-admin-page.php:137
+msgid "Enable the widget found in Appearance > Widgets."
+msgstr ""
+
+#: ../includes/wpml-admin-page.php:156
 msgid "Customize the look and feel of the modal login window and other options"
 msgstr ""
 
-#: ../includes/wpml-admin-page.php:130
+#: ../includes/wpml-admin-page.php:168
 msgid "Customize the options for the Widget"
 msgstr ""
 

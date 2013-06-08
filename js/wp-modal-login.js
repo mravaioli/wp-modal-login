@@ -77,9 +77,9 @@ jQuery(document).ready(function($) {
 		// Check if we are trying to login. If so, process all the needed form fields and return a faild or success message.
 		if ( form_id === 'login' ) {
 			$.ajax({
-				type: 'POST',
+				type: 'GET',
 				dataType: 'json',
-				url: wpml_script.ajaxurl,
+				url: wpml_script.ajax,
 				data: {
 					'action'     : 'ajaxlogin', // Calls our wp_ajax_nopriv_ajaxlogin
 					'username'   : $('#form #login_user').val(),
@@ -89,13 +89,14 @@ jQuery(document).ready(function($) {
 					'security'   : $('#form #security').val()
 				},
 				success: function(results) {
+
 					// Check the returned data message. If we logged in successfully, then let our users know and remove the modal window.
 					if(results.loggedin === true) {
 						$('.wpml-content > p.message').removeClass('notice').addClass('success').text(results.message).show();
 						$('#overlay, .login-popup').delay(5000).fadeOut('300m', function() {
 							$('#overlay').remove();
 						});
-						document.location.href = wpml_script.redirecturl;
+						window.location.href = wpml_script.redirecturl;
 					} else {
 						$('.wpml-content > p.message').removeClass('notice').addClass('error').text(results.message).show();
 					}
@@ -103,9 +104,9 @@ jQuery(document).ready(function($) {
 			});
 		} else if ( form_id === 'register' ) {
 			$.ajax({
-				type: 'POST',
+				type: 'GET',
 				dataType: 'json',
-				url: wpml_script.ajaxurl,
+				url: wpml_script.ajax,
 				data: {
 					'action'   : 'ajaxlogin', // Calls our wp_ajax_nopriv_ajaxlogin
 					'username' : $('#form #reg_user').val(),
@@ -124,9 +125,9 @@ jQuery(document).ready(function($) {
 			});
 		} else if ( form_id === 'forgotten' ) {
 			$.ajax({
-				type: 'POST',
+				type: 'GET',
 				dataType: 'json',
-				url: wpml_script.ajaxurl,
+				url: wpml_script.ajax,
 				data: {
 					'action'    : 'ajaxlogin', // Calls our wp_ajax_nopriv_ajaxlogin
 					'username'  : $('#form #forgot_login').val(),

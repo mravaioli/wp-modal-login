@@ -66,6 +66,12 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 `<?php $modal_login = new Geissinger_WP_Modal_Login; echo $modal_login; ?>`
 
 == Changelog ==
+= 2.0.2 =
+* Fixed issue of login when using alongside other Ajax plugins.
+* Removed esc_url() from the wp_logout_url() as it created too much sanitization and caused logout issues.
+* Updated mislabeled text domain in wpml-admin-page.php and updated en.po.
+* Added option to disable the "Register" button in the modal window if using another registration system.
+
 = 2.0.1 =
 * Moved admin page to be a submenu under Settings.
 * Fixed some display issues with the themes under IE8 (IE7 and below not supported, sorry!).
