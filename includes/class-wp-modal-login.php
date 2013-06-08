@@ -11,7 +11,7 @@
 	class Geissinger_WP_Modal_Login {
 
 		// Set the version number
-		public $plugin_version = '2.0.1';
+		public $plugin_version = '2.0.2';
 
 
 		/**
@@ -106,7 +106,7 @@
 		 * The main function behind a large section of the Ajax-y goodness.
 		 * @return void
 		 *
-		 * @version 1.0
+		 * @version 1.1
 		 * @since 2.0
 		 */
 		public function ajax_login() {
@@ -344,7 +344,7 @@
 		 *          inside_wpml_form_last		Add items at the end of the form wrapper after the submit button.
 		 *          after_wpml_form				Add items after the form iteself.
 		 *
-		 * @version 2.0
+		 * @version 2.0.1
 		 * @since 1.0
 		 */
 		public function login_form() {
@@ -485,7 +485,7 @@
 		 * Adds some additional fields to the login_form(). Hooked through 'after_wpml_form'.
 		 * @return void
 		 *
-		 * @version 1.0
+		 * @version 1.1
 		 * @since 2.0
 		 */
 		public function additional_options() {
