@@ -28,7 +28,7 @@
 	 * @since 2.0
 	 */
 	function geissinger_setup_wpml_admin_menu() {
-		$page = add_submenu_page( 'options-general.php', __( 'WP Modal Login', 'geissinger_wpml' ), __( 'WP Modal Login', 'geissinger_wpml' ), 'manage_options', 'wpml-options', 'geissinger_wpml_options', 99 );
+		$page = add_submenu_page( 'options-general.php', __( 'WP Modal Login', 'geissinger-wpml' ), __( 'WP Modal Login', 'geissinger-wpml' ), 'manage_options', 'wpml-options', 'geissinger_wpml_options', 99 );
 
 		add_action( 'admin_print_styles-' . $page, 'geissinger_admin_resources' );
 	}
@@ -46,11 +46,11 @@
 
 		// Check that the user is able to view this page.
 		if ( ! current_user_can( 'manage_options' ) )
-			wp_die( __( 'You do not have sufficient permissions to access this page.', 'geissinger_wpml' ) ); ?>
+			wp_die( __( 'You do not have sufficient permissions to access this page.', 'geissinger-wpml' ) ); ?>
 
 		<div class="wrap">
 			<div id="icon-themes" class="icon32"></div>
-			<h2><?php _e( 'WordPress Modal Login Options', 'geissinger_wpml' ); ?></h2>
+			<h2><?php _e( 'WordPress Modal Login Options', 'geissinger-wpml' ); ?></h2>
 
 			<?php // settings_errors(); ?>
 
@@ -81,45 +81,45 @@
 			add_option( 'geissinger_wpml_options' );
 
 		// Define our settings sections.
-		add_settings_section( 'wpml_settings_section', __( 'Modal Theme', 'geissinger_wpml' ), 'geissinger_wpml_settings_options', 'geissinger_wpml_settings_options' );
-		add_settings_section( 'wpml_widget_settings_section', __( 'Widget Options', 'geissinger_wpml' ), 'geissinger_wpml_widget_options', 'geissinger_wpml_widget_options' );
+		add_settings_section( 'wpml_settings_section', __( 'Modal Theme', 'geissinger-wpml' ), 'geissinger_wpml_settings_options', 'geissinger_wpml_settings_options' );
+		add_settings_section( 'wpml_widget_settings_section', __( 'Widget Options', 'geissinger-wpml' ), 'geissinger_wpml_widget_options', 'geissinger_wpml_widget_options' );
 
 
 		/*** Settings Fields for 'geissinger_wpmp_settings_options' section ***/
-		add_settings_field( 'show_shortcode_button', 'Show Shortcode Button', 'geissinger_settings_field_checkbox', 'geissinger_wpml_settings_options', 'wpml_settings_section', array(
+		add_settings_field( 'show_shortcode_button', __( 'Show Shortcode Button', 'geissinger-wpml' ), 'geissinger_settings_field_checkbox', 'geissinger_wpml_settings_options', 'wpml_settings_section', array(
 			'options-name' => $option_name,
 			'id' 				=> 'display-shortcode-btn',
 			'class' 			=> '',
 			'value' 		   => 'true',
-			'label' 			=> __( 'Enable the shortcode button found with the page & post editor.', 'geissinger_wpml' ),
+			'label' 			=> __( 'Enable the shortcode button found with the page & post editor.', 'geissinger-wpml' ),
 		) );
-		add_settings_field( 'modal_theme', 'Select A Theme', 'geissinger_settings_field_select', 'geissinger_wpml_settings_options', 'wpml_settings_section', array(
+		add_settings_field( 'modal_theme', __( 'Select A Theme', 'geissinger-wpml' ), 'geissinger_settings_field_select', 'geissinger_wpml_settings_options', 'wpml_settings_section', array(
 			'options-name' => $option_name,
 			'id'				=> 'modal-theme',
 			'class' 			=> '',
 			'value'			=> array(
-										'default' => 'Default',
-										'theme-1' => 'Theme 1',
-										'theme-2' => 'Theme 2',
-										'custom'  => 'None',
+										'default' => __( 'Default' , 'geissinger-wpml' ),
+										'theme-1' => __( 'Theme 1', 'geissinger-wpml' ),
+										'theme-2' => __( 'Theme 2', 'geissinger-wpml' ),
+										'custom'  => __( 'None', 'geissinger-wpml' ),
 									),
-			'label'			=> __( 'Select a new theme for your modal login window. You may choose to load no theme and load in your own custom CSS styles if you wish.', 'geissinger_wpml' ),
+			'label'			=> __( 'Select a new theme for your modal login window. You may choose to load no theme and load in your own custom CSS styles if you wish.', 'geissinger-wpml' ),
 		) );
-		add_settings_field( 'add_custom_css', 'Add Custom CSS', 'geissinger_settings_field_checkbox', 'geissinger_wpml_settings_options', 'wpml_settings_section', array(
+		add_settings_field( 'add_custom_css', __( 'Add Custom CSS', 'geissinger-wpml' ), 'geissinger_settings_field_checkbox', 'geissinger_wpml_settings_options', 'wpml_settings_section', array(
 			'options-name' => $option_name,
 			'id'				=> 'add-custom-css',
 			'class' 			=> '',
 			'value'			=> 'custom',
-			'label'			=> __( 'Add custom CSS if you wish to over ride any styles in the selected theme.', 'geissinger_wpml' ),
+			'label'			=> __( 'Add custom CSS if you wish to over ride any styles in the selected theme.', 'geissinger-wpml' ),
 		) );
-		add_settings_field( 'custom_css', 'Custom CSS', 'geissinger_settings_field_textarea', 'geissinger_wpml_settings_options', 'wpml_settings_section', array(
+		add_settings_field( 'custom_css', __( 'Custom CSS', 'geissinger-wpml' ), 'geissinger_settings_field_textarea', 'geissinger_wpml_settings_options', 'wpml_settings_section', array(
 			'options-name' => $option_name,
 			'id'				=> 'custom-css',
 			'class'			=> '',
 			'value'			=> '',
 			'label'			=> __( 'Add your custom CSS code.' ),
 		) );
-		add_settings_field( 'remove_reg', 'Disable Register Button', 'geissinger_settings_field_checkbox', 'geissinger_wpml_settings_options', 'wpml_settings_section', array(
+		add_settings_field( 'remove_reg', __( 'Disable Register Button', 'geissinger-wpml' ), 'geissinger_settings_field_checkbox', 'geissinger_wpml_settings_options', 'wpml_settings_section', array(
 			'options-name' => $option_name,
 			'id'				=> 'remove-reg',
 			'class'			=> '',
@@ -129,12 +129,12 @@
 
 
 		/*** Settings Fields for 'geissinger_wpml_widget_options' ***/
-		add_settings_field( 'show_widget', 'Show Widget', 'geissinger_settings_field_checkbox', 'geissinger_wpml_widget_options', 'wpml_widget_settings_section', array(
+		add_settings_field( 'show_widget', __( 'Show Widget', 'geissinger-wpml' ), 'geissinger_settings_field_checkbox', 'geissinger_wpml_widget_options', 'wpml_widget_settings_section', array(
 			'options-name' => $option_name,
 			'id' 				=> 'display-widget',
 			'class' 			=> '',
 			'value' 			=> 'true',
-			'label' 			=> __( 'Enable the widget found in Appearance > Widgets.', 'geissinger_wpml' ),
+			'label' 			=> __( 'Enable the widget found in Appearance > Widgets.', 'geissinger-wpml' ),
 		) );
 
 
@@ -153,7 +153,7 @@
 	 * @since 2.0
 	 */
 	function geissinger_wpml_settings_options() {
-		echo '<p>' . __( 'Customize the look and feel of the modal login window and other options', 'geissinger_wpml' ) . '.</p>';
+		echo '<p>' . __( 'Customize the look and feel of the modal login window and other options', 'geissinger-wpml' ) . '.</p>';
 	}
 
 
@@ -165,7 +165,7 @@
 	 * @since 2.0
 	 */
 	function geissinger_wpml_widget_options() {
-		echo '<p>' . __( 'Customize the options for the Widget', 'geissinger_wpml' ) . '.</p>';
+		echo '<p>' . __( 'Customize the options for the Widget', 'geissinger-wpml' ) . '.</p>';
 	}
 
 
@@ -184,7 +184,7 @@
 		// Get the options from the database
 		$options = get_option( $args['options-name'] ); ?>
 
-		<label for="<?php echo $args['id']; ?>"><?php esc_attr_e( $args['label'] ); ?></label><br />
+		<label for="<?php echo $args['id']; ?>"><?php echo printf( __( '%d', 'geissinger-wpml' ), esc_attr( $args['label'] ) ); ?></label><br />
 		<textarea name="<?php echo $name; ?>" id="<?php echo $args['id']; ?>" class="large-text<?php if ( ! empty( $args['class'] ) ) echo ' ' . $args['class']; ?>" cols="30" rows="10"><?php esc_attr_e( $options[ $args['id'] ] ); ?></textarea>
 	<?php }
 
@@ -205,7 +205,7 @@
 		$options = get_option( $args['options-name'] ); ?>
 
 		<input type="checkbox" name="<?php echo $name; ?>" id="<?php echo $args['id']; ?>" <?php if ( ! empty( $args['class'] ) ) echo 'class="' . $args['class'] . '" '; ?>value="<?php esc_attr_e( $args['value'] ); ?>" <?php if ( isset( $options[ $args['id'] ] ) ) checked( $args['value'], $options[ $args['id'] ], true ); ?> />
-		<label for="<?php echo $args['id']; ?>"><?php esc_attr_e( $args['label'] ); ?></label>
+		<label for="<?php echo $args['id']; ?>"><?php echo printf( __( '%d', 'geissinger-wpml' ), esc_attr( $args['label'] ) ); ?></label>
 	<?php }
 
 
@@ -226,10 +226,10 @@
 
 		<select name="<?php echo $name; ?>" id="<?php echo $args['id']; ?>" <?php if ( ! empty( $args['class'] ) ) echo 'class="' . $args['class'] . '" '; ?>>
 			<?php foreach ( $args['value'] as $key => $value ) : ?>
-				<option value="<?php esc_attr_e( $key ); ?>"<?php if ( isset( $options[ $args['id'] ] ) ) selected( $key, $options[ $args['id'] ], true ); ?>><?php esc_attr_e( $value ); ?></option>
+				<option value="<?php esc_attr_e( $key ); ?>"<?php if ( isset( $options[ $args['id'] ] ) ) selected( $key, $options[ $args['id'] ], true ); ?>><?php echo printf( __( '%d', 'geissinger-wpml' ), esc_attr( $value ) ); ?></option>
 			<?php endforeach; ?>
 		</select>
-		<label for="<?php echo $args['id']; ?>" style="display:block;"><?php esc_attr_e( $args['label'] ); ?></label>
+		<label for="<?php echo $args['id']; ?>" style="display:block;"><?php echo printf( __( '%d', 'geissinger-wpml' ), esc_attr( $args['label'] ) ); ?></label>
 	<?php }
 
 

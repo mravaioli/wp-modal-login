@@ -5,49 +5,61 @@
 	 *
 	 * This contains all the cool jazz that makes this plugin work.
 	 *
-	 * @version 2.0.1
+	 * @version 2.0.3
 	 * @since 1.0
 	 */
 	class Geissinger_WP_Modal_Login {
 
 		// Set the version number
-		public $plugin_version = '2.0.2';
+		public $plugin_version = '2.0.3';
 
 
 		/**
 		 * Loads all of our required hooks and filters and other cool doodads.
 		 *
-		 * @version 1.1
+		 * @version 1.2
 		 * @since 1.0
 		 */
 		public function __construct() {
 			global $wpml_settings;
 
 			// load our Localization.
-			load_plugin_textdomain( 'geissinger_wpml', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
+			add_action( 'plugins_loaded', array( $this, 'load_plugin_translations' ) );
 
 			// Register our source code with the wp_footer().
-			add_action( 'wp_footer', array( &$this, 'login_form' ) );
+			add_action( 'wp_footer', array( $this, 'login_form' ) );
 
 			// Add our JavaScript and Stylesheets to the front-end.
-			add_action( 'wp_enqueue_scripts', array( &$this, 'print_resources' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'print_resources' ) );
 
 			// Add the users custom CSS if they wish to add any.
 			if ( isset( $wpml_settings['custom-css'] ) )
-				add_action( 'wp_head', array( &$this, 'print_custom_css' ) );
+				add_action( 'wp_head', array( $this, 'print_custom_css' ) );
 
 			// Add our lost password field.
-			add_action( 'after_wpml_form', array( &$this, 'additional_options' ) );
+			add_action( 'after_wpml_form', array( $this, 'additional_options' ) );
 
 			// Add our shortcode action.
-			add_shortcode( 'wp-modal-login', array( &$this, 'modal_login_btn_shortcode' ) );
+			add_shortcode( 'wp-modal-login', array( $this, 'modal_login_btn_shortcode' ) );
 
 			// Register our widget but only if the user has allowed the widget option.
 			if ( isset( $wpml_settings['display-widget'] ) )
 				add_action( 'widgets_init', create_function( '', 'register_widget( "Geissinger_WP_Modal_Login_Widget" );' ) );
 
 			// Allow us to run Ajax on the login.
-			add_action( 'wp_ajax_nopriv_ajaxlogin', array( &$this, 'ajax_login' ) );
+			add_action( 'wp_ajax_nopriv_ajaxlogin', array( $this, 'ajax_login' ) );
+		}
+
+
+		/**
+		 * Sets up and load our translation files
+		 * @return Void
+		 *
+		 * @version 1.0
+		 * @since 2.0.3
+		 */
+		public function load_plugin_translations() {
+			load_plugin_textdomain( 'geissinger-wpml', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
 		}
 
 
@@ -55,7 +67,7 @@
 		 * Add all of our scripts and styles with WordPress.
 		 * @return void
 		 *
-		 * @version 2.0
+		 * @version 2.1
 		 * @since 1.0
 		 */
 		public function print_resources() {
@@ -81,7 +93,7 @@
 			if ( ! is_user_logged_in() ) {
 				wp_localize_script( 'wpml-script', 'wpml_script', array(
 					'ajax' 		  => admin_url( 'admin-ajax.php' ),
-					'redirecturl' 	  => $_SERVER['REQUEST_URI'],
+					'redirecturl' 	  => apply_filters( 'wpml_redirect_to', $_SERVER['REQUEST_URI'] ),
 					'loadingmessage' => __( 'checking credentials...' ),
 				) );
 			}
@@ -106,7 +118,7 @@
 		 * The main function behind a large section of the Ajax-y goodness.
 		 * @return void
 		 *
-		 * @version 1.1
+		 * @version 1.1.1
 		 * @since 2.0
 		 */
 		public function ajax_login() {
@@ -121,19 +133,19 @@
 			if ( isset( $_REQUEST['login'] ) )  {
 				$data['user_login'] 	  = sanitize_user( $_REQUEST['username'] );
 				$data['user_password'] = esc_attr( $_REQUEST['password'] );
-				$data['rememberme'] 	  = $_REQUEST['rememberme'];
+				$data['rememberme'] 	  = esc_attr( $_REQUEST['rememberme'] );
 				$user_login 			  = wp_signon( $data, false );
 
 				// Check the results of our login and provide the needed feedback
 				if ( is_wp_error( $user_login ) ) {
 					echo json_encode( array(
 						'loggedin' => false,
-						'message'  => __( 'Wrong Username or Password!', 'geissinger_wpml' ),
+						'message'  => __( 'Wrong Username or Password!', 'geissinger-wpml' ),
 					) );
 				} else {
 					echo json_encode( array(
 						'loggedin' => true,
-						'message'  => __( 'Login Successful!', 'geissinger_wpml' ),
+						'message'  => __( 'Login Successful!', 'geissinger-wpml' ),
 					) );
 				}
 			}
@@ -155,7 +167,7 @@
 				} else {
 					echo json_encode( array(
 						'registerd' => true,
-						'message'	=> __( 'Registration complete. Please check your e-mail.', 'geissinger_wpml' ),
+						'message'	=> __( 'Registration complete. Please check your e-mail.', 'geissinger-wpml' ),
 					) );
 				}
 			}
@@ -182,7 +194,7 @@
 				} else {
 					echo json_encode( array(
 						'reset'   => true,
-						'message' => __( 'Password Reset. Please check your email.', 'geissinger_wpml' ),
+						'message' => __( 'Password Reset. Please check your email.', 'geissinger-wpml' ),
 					) );
 				}
 			}
@@ -207,22 +219,22 @@
 
 			// Check the username was sanitized
 			if ( $sanitized_user_login == '' ) {
-				$errors->add( 'empty_username', __( 'Please enter a username.', 'geissinger_wpml' ) );
+				$errors->add( 'empty_username', __( 'Please enter a username.', 'geissinger-wpml' ) );
 			} elseif ( ! validate_username( $user_login ) ) {
-				$errors->add( 'invalid_username', __( 'This username is invalid because it uses illegal characters. Please enter a valid username.', 'geissinger_wpml' ) );
+				$errors->add( 'invalid_username', __( 'This username is invalid because it uses illegal characters. Please enter a valid username.', 'geissinger-wpml' ) );
 				$sanitized_user_login = '';
 			} elseif ( username_exists( $sanitized_user_login ) ) {
-				$errors->add( 'username_exists', __( 'This username is already registered. Please choose another one.', 'geissinger_wpml' ) );
+				$errors->add( 'username_exists', __( 'This username is already registered. Please choose another one.', 'geissinger-wpml' ) );
 			}
 
 			// Check the e-mail address
 			if ( $user_email == '' ) {
-				$errors->add( 'empty_email', __( 'Please type your e-mail address.', 'geissinger_wpml' ) );
+				$errors->add( 'empty_email', __( 'Please type your e-mail address.', 'geissinger-wpml' ) );
 			} elseif ( ! is_email( $user_email ) ) {
-				$errors->add( 'invalid_email', __( 'The email address isn\'t correct.', 'geissinger_wpml' ) );
+				$errors->add( 'invalid_email', __( 'The email address isn\'t correct.', 'geissinger-wpml' ) );
 				$user_email = '';
 			} elseif ( email_exists( $user_email ) ) {
-				$errors->add( 'email_exists', __( 'This email is already registered, please choose another one.', 'geissinger_wpml' ) );
+				$errors->add( 'email_exists', __( 'This email is already registered, please choose another one.', 'geissinger-wpml' ) );
 			}
 
 			$errors = apply_filters( 'registration_errors', $errors, $sanitized_user_login, $user_email );
@@ -234,7 +246,7 @@
 			$user_id = wp_create_user( $sanitized_user_login, $user_pass, $user_email );
 
 			if ( ! $user_id ) {
-				$errors->add( 'registerfail', sprintf( __( 'Couldn\'t register you... please contact the site administrator', 'geissinger_wpml' ), get_option( 'admin_email' ) ) );
+				$errors->add( 'registerfail', sprintf( __( 'Couldn\'t register you... please contact the site administrator', 'geissinger-wpml' ), get_option( 'admin_email' ) ) );
 
 				return $errors;
 			}
@@ -261,11 +273,11 @@
 			$errors = new WP_Error();
 
 			if ( empty( $user_data ) ) {
-				$errors->add( 'empty_username', __( 'Please enter a username or e-mail address.', 'geissinger_wpml' ) );
+				$errors->add( 'empty_username', __( 'Please enter a username or e-mail address.', 'geissinger-wpml' ) );
 			} else if ( strpos( $user_data, '@' ) ) {
 				$user_data = get_user_by( 'email', trim( $user_data ) );
 				if ( empty( $user_data ) )
-					$errors->add( 'invalid_email', __( 'There is no user registered with that email address.', 'geissinger_wpml'  ) );
+					$errors->add( 'invalid_email', __( 'There is no user registered with that email address.', 'geissinger-wpml'  ) );
 			} else {
 				$login = trim( $user_data );
 				$user_data = get_user_by( 'login', $login );
@@ -277,7 +289,7 @@
 				return $errors;
 
 			if ( ! $user_data ) {
-				$errors->add( 'invalidcombo', __( 'Invalid username or e-mail.', 'geissinger_wpml' ) );
+				$errors->add( 'invalidcombo', __( 'Invalid username or e-mail.', 'geissinger-wpml' ) );
 				return $errors;
 			}
 
@@ -291,7 +303,7 @@
 			$allow = apply_filters( 'allow_password_reset', true, $user_data->ID );
 
 			if ( ! $allow )
-				return new WP_Error( 'no_password_reset', __( 'Password reset is not allowed for this user', 'geissinger_wpml' ) );
+				return new WP_Error( 'no_password_reset', __( 'Password reset is not allowed for this user', 'geissinger-wpml' ) );
 			else if ( is_wp_error( $allow ) )
 				return $allow;
 
@@ -322,7 +334,7 @@
 			$message = apply_filters( 'retrieve_password_message', $message, $key );
 
 			if ( $message && ! wp_mail( $user_email, $title, $message ) ) {
-				$errors->add( 'noemail', __( 'The e-mail could not be sent. Possible reason: your host may have disabled the mail() function.', 'geissinger_wpml' ) );
+				$errors->add( 'noemail', __( 'The e-mail could not be sent. Possible reason: your host may have disabled the mail() function.', 'geissinger-wpml' ) );
 
 				return $errors;
 
@@ -362,7 +374,7 @@
 						<?php // Login Form ?>
 						<div id="login" class="wpml-content">
 
-							<h2><?php _e( 'Login', 'geissinger_wpml' ); ?></h2>
+							<h2><?php _e( 'Login', 'geissinger-wpml' ); ?></h2>
 
 							<?php do_action( 'before_wpml_login' ); ?>
 
@@ -371,12 +383,12 @@
 								<?php do_action( 'inside_wpml_login_first' ); ?>
 
 								<p>
-									<label class="field-titles" for="login_user"><?php _e( 'Username', 'geissinger_wpml' ); ?></label>
+									<label class="field-titles" for="login_user"><?php _e( 'Username', 'geissinger-wpml' ); ?></label>
 									<input type="text" name="log" id="login_user" class="input" value="<?php if ( isset( $user_login ) ) echo esc_attr( $user_login ); ?>" size="20" tabindex="1" />
 								</p>
 
 								<p>
-									<label class="field-titles" for="login_pass"><?php _e( 'Password', 'geissinger_wpml' ); ?></label>
+									<label class="field-titles" for="login_pass"><?php _e( 'Password', 'geissinger-wpml' ); ?></label>
 									<input type="password" name="pwd" id="login_pass" class="input" value="" size="20" tabindex="2" />
 								</p>
 
@@ -404,7 +416,7 @@
 						<?php // Registration form ?>
 						<div id="register" class="wpml-content" style="display:none;">
 
-							<h2><?php _e( 'register', 'geissinger_wpml' ); ?></h2>
+							<h2><?php _e( 'Register', 'geissinger-wpml' ); ?></h2>
 
 							<?php do_action( 'before_wpml_register' ); ?>
 
@@ -413,12 +425,12 @@
 								<?php do_action( 'inside_wpml_register_first' ); ?>
 
 								<p>
-									<label class="field-titles" for="reg_user"><?php _e( 'Username', 'geissinger_wpml' ); ?></label>
+									<label class="field-titles" for="reg_user"><?php _e( 'Username', 'geissinger-wpml' ); ?></label>
 									<input type="text" name="user_login" id="reg_user" class="input" value="<?php if ( isset( $user_login ) ) echo esc_attr( stripslashes( $user_login ) ); ?>" size="20" tabindex="1" />
 								</p>
 
 								<p>
-									<label class="field-titles" for="reg_email"><?php _e( 'Email', 'geissinger_wpml' ); ?></label>
+									<label class="field-titles" for="reg_email"><?php _e( 'Email', 'geissinger-wpml' ); ?></label>
 									<input type="text" name="user_email" id="reg_email" class="input" value="<?php if ( isset( $user_email ) ) echo esc_attr( stripslashes( $user_email ) ); ?>" size="20" tabindex="3" />
 								</p>
 
@@ -428,7 +440,7 @@
 
 									<?php do_action( 'inside_wpml_register_submit' ); ?>
 
-									<input type="submit" name="user-sumbit" id="user-submit" class="button button-primary button-large" value="<?php esc_attr_e( 'Sign Up', 'geissinger_wpml' ); ?>" />
+									<input type="submit" name="user-sumbit" id="user-submit" class="button button-primary button-large" value="<?php esc_attr_e( 'Sign Up', 'geissinger-wpml' ); ?>" />
 									<input type="hidden" name="register" value="true" />
 									<?php wp_nonce_field( 'ajax-form-nonce', 'security' ); ?>
 
@@ -443,7 +455,7 @@
 						<?php // Forgotten Password ?>
 						<div id="forgotten" class="wpml-content" style="display:none;">
 
-							<h2><?php _e( 'Forgotten Password?', 'geissinger_wpml' ); ?></h2>
+							<h2><?php _e( 'Forgotten Password?', 'geissinger-wpml' ); ?></h2>
 
 							<?php do_action( 'before_wpml_forgotten' ); ?>
 
@@ -452,7 +464,7 @@
 								<?php do_action( 'inside_wpml_forgotton_first' ); ?>
 
 								<p>
-									<label class="field-titles" for="forgot_login"><?php _e( 'Username or Email', 'geissinger_wpml' ); ?></label>
+									<label class="field-titles" for="forgot_login"><?php _e( 'Username or Email', 'geissinger-wpml' ); ?></label>
 									<input type="text" name="forgot_login" id="forgot_login" class="input" value="<?php if ( isset( $user_login ) ) echo esc_attr( stripslashes( $user_login ) ); ?>" size="20" />
 								</p>
 
@@ -462,7 +474,7 @@
 
 									<?php do_action( 'inside_wpml_forgotten_submit' ); ?>
 
-									<input type="submit" name="user-submit" id="user-submit" class="button button-primary button-large" value="<?php esc_attr_e( 'Reset Password', 'geissinger_wpml' ); ?>">
+									<input type="submit" name="user-submit" id="user-submit" class="button button-primary button-large" value="<?php esc_attr_e( 'Reset Password', 'geissinger-wpml' ); ?>">
 									<input type="hidden" name="forgotten" value="true" />
 									<?php wp_nonce_field( 'ajax-form-nonce', 'security' ); ?>
 
@@ -498,10 +510,10 @@
 			// Check if we have disabled this via the admin options first.
 			if ( ! isset( $wpml_settings['remove-reg'] ) ) {
 				if ( (get_option( 'users_can_register' ) && ! is_multisite() ) || ( $multisite_reg == 'all' || $multisite_reg == 'blog' || $multisite_reg == 'user' ) )
-					echo '<a href="#register" class="wpml-nav">' . __( 'Register', 'geissinger_wpml' ) . '</a> | ';
+					echo '<a href="#register" class="wpml-nav">' . __( 'Register', 'geissinger-wpml' ) . '</a> | ';
 			}
 
-			echo '<a href="#forgotten" class="wpml-nav">' . __( 'Lost your password?', 'geissinger_wpml' ) . '</a>';
+			echo '<a href="#forgotten" class="wpml-nav">' . __( 'Lost your password?', 'geissinger-wpml' ) . '</a>';
 
 			echo '<div class="hide-login"> | <a href="#login" class="wpml-nav">Back to Login</a></div>';
 
@@ -517,7 +529,7 @@
 		 * @since 2.0
 		 */
 		public function back_to_login() {
-			echo '<a href="#login" class="wpml-nav">' . __( 'Login', 'geissinger_wpml' ) . '</a>';
+			echo '<a href="#login" class="wpml-nav">' . __( 'Login', 'geissinger-wpml' ) . '</a>';
 		}
 
 
@@ -541,7 +553,7 @@
 			if ( is_user_logged_in() ) {
 				$link = '<a href="' . wp_logout_url( $logout_url ) . '" class="login">' . sprintf( sanitize_text_field( '%s' ), $logout_text ) . '</a>';
 				if ( $show_admin )
-					$link .= ' | <a href="' . esc_url( admin_url() ) . '">' . __( 'View Admin', 'geissinger_wpml' ) . '</a>';
+					$link .= ' | <a href="' . esc_url( admin_url() ) . '">' . __( 'View Admin', 'geissinger-wpml' ) . '</a>';
 			} else {
 				$link = '<a href="#login-box" class="login login-window">' . sprintf( sanitize_text_field( '%s' ), $login_text ) . '</a></li>';
 			}
@@ -560,8 +572,8 @@
 		 */
 		function modal_login_btn_shortcode( $atts ) {
 			extract( shortcode_atts( array(
-				'login_text'  => __( 'Login', 'geissinger_wpml' ),
-				'logout_text' => __( 'Logout', 'geissinger_wpml' ),
+				'login_text'  => __( 'Login', 'geissinger-wpml' ),
+				'logout_text' => __( 'Logout', 'geissinger-wpml' ),
 				'logout_url'  => wp_logout_url( home_url() ),
 			), $atts ) );
 

@@ -1,19 +1,16 @@
+# Copyright (C) 2013 WP Modal Login
+# This file is distributed under the same license as the WP Modal Login package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Modal Login\n"
-"POT-Creation-Date: 2013-06-07 22:46-0800\n"
-"PO-Revision-Date: 2013-06-07 22:46-0800\n"
-"Last-Translator: Cole Geissinger <cole@colegeissinger.com>\n"
-"Language-Team: Cole Geissinger <cole@colegeissinger.com>\n"
-"Language: en_US\n"
+"Project-Id-Version: WP Modal Login 2.0.2\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-modal-login\n"
+"POT-Creation-Date: 2013-06-16 04:22:47+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
-"X-Poedit-KeywordsList: __;_e\n"
-"X-Poedit-Basepath: .\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-SearchPath-0: ..\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Cole Geissinger <cole@colegeissinger.com>\n"
+"Language-Team: English\n"
 
 #: ../includes/class-wp-modal-login.php:85
 msgid "checking credentials..."
@@ -86,7 +83,6 @@ msgid "Someone requested that the password be reset for the following account:"
 msgstr ""
 
 #: ../includes/class-wp-modal-login.php:308
-#, php-format
 msgid "Username: %s"
 msgstr ""
 
@@ -99,7 +95,6 @@ msgid "To reset your password, visit the following address:"
 msgstr ""
 
 #: ../includes/class-wp-modal-login.php:320
-#, php-format
 msgid "[%s] Password Reset"
 msgstr ""
 
@@ -109,14 +104,12 @@ msgid ""
 "the mail() function."
 msgstr ""
 
-#: ../includes/class-wp-modal-login.php:365
-#: ../includes/class-wp-modal-login.php:520
+#: ../includes/class-wp-modal-login.php:365 ../includes/class-wp-modal-login.php:520
 #: ../includes/class-wp-modal-login.php:563
 msgid "Login"
 msgstr ""
 
-#: ../includes/class-wp-modal-login.php:374
-#: ../includes/class-wp-modal-login.php:416
+#: ../includes/class-wp-modal-login.php:374 ../includes/class-wp-modal-login.php:416
 msgid "Username"
 msgstr ""
 
@@ -124,12 +117,24 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
+#: ../includes/class-wp-modal-login.php:386
+msgid "Remember Me"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:393
+msgid "Log In"
+msgstr ""
+
 #: ../includes/class-wp-modal-login.php:407
-msgid "register"
+msgid "Register"
 msgstr ""
 
 #: ../includes/class-wp-modal-login.php:421
 msgid "Email"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:431
+msgid "Sign Up"
 msgstr ""
 
 #: ../includes/class-wp-modal-login.php:446
@@ -138,6 +143,10 @@ msgstr ""
 
 #: ../includes/class-wp-modal-login.php:455
 msgid "Username or Email"
+msgstr ""
+
+#: ../includes/class-wp-modal-login.php:465
+msgid "Reset Password"
 msgstr ""
 
 #: ../includes/class-wp-modal-login.php:501
@@ -156,7 +165,29 @@ msgstr ""
 msgid "Logout"
 msgstr ""
 
-#: ../includes/wpml-admin-page.php:31 ../widget/class-login-widget.php:24
+#: ../includes/tinymce-shortcode-btn/popup.php:14
+msgid "Oops! You can't call this page directly."
+msgstr ""
+
+#: ../includes/tinymce-shortcode-btn/popup.php:25
+msgid "Add Modal Login Shortcode"
+msgstr ""
+
+#: ../includes/tinymce-shortcode-btn/popup.php:46
+msgid "Login Text"
+msgstr ""
+
+#: ../includes/tinymce-shortcode-btn/popup.php:54
+msgid "Logout Text"
+msgstr ""
+
+#: ../includes/tinymce-shortcode-btn/popup.php:62
+msgid "Logout Redirect URL"
+msgstr ""
+
+#. #-#-#-#-#  plugin.pot (WP Modal Login 2.0.2)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: ../includes/wpml-admin-page.php:31 widget/class-login-widget.php:24
 msgid "WP Modal Login"
 msgstr ""
 
@@ -213,46 +244,42 @@ msgstr ""
 msgid "Customize the options for the Widget"
 msgstr ""
 
-#: ../includes/tinymce-shortcode-btn/popup.php:14
-msgid "Oops! You can't call this page directly."
-msgstr ""
-
-#: ../includes/tinymce-shortcode-btn/popup.php:25
-msgid "Add Modal Login Shortcode"
-msgstr ""
-
-#: ../includes/tinymce-shortcode-btn/popup.php:46
-msgid "Login Text"
-msgstr ""
-
-#: ../includes/tinymce-shortcode-btn/popup.php:54
-msgid "Logout Text"
-msgstr ""
-
-#: ../includes/tinymce-shortcode-btn/popup.php:62
-msgid "Logout Redirect URL"
-msgstr ""
-
-#: ../widget/class-login-widget.php:21
+#: widget/class-login-widget.php:21
 msgid "Display a login/logout link that displays a pop-up login form"
 msgstr ""
 
-#: ../widget/views/form.php:2
+#: widget/views/form.php:2
 msgid "Title:"
 msgstr ""
 
-#: ../widget/views/form.php:7
+#: widget/views/form.php:7
 msgid "Login Text:"
 msgstr ""
 
-#: ../widget/views/form.php:12
+#: widget/views/form.php:12
 msgid "Logout Text:"
 msgstr ""
 
-#: ../widget/views/form.php:17
+#: widget/views/form.php:17
 msgid "Logout Redirection URL:"
 msgstr ""
 
-#: ../widget/views/form.php:22
+#: widget/views/form.php:22
 msgid "Show Admin Link:"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wp-modal-login.colegeissinger.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "A highly configurable and versatile modal (pop-up) login form."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Cole Geissinger"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.colegeissinger.com"
 msgstr ""

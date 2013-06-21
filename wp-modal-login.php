@@ -3,10 +3,10 @@
 	Plugin Name: WP Modal Login
 	Plugin URI: http://wp-modal-login.colegeissinger.com
 	Description: A highly configurable and versatile modal (pop-up) login form.
-	Version: 2.0.2
+	Version: 2.0.3
 	Author: Cole Geissinger
 	Author URI: http://www.colegeissinger.com
-	Text Domain: geissinger_wpml
+	Text Domain: geissinger-wpml
 	License: GPLv2 or later
 
 	Copyright 2013 Cole Geissinger (cole@colegeissing.com)
