@@ -45,8 +45,6 @@
 
 			// Allow us to run Ajax on the login.
 			add_action( 'wp_ajax_nopriv_ajaxlogin', array( $this, 'ajax_login' ) );
-
-			add_filter( 'geissinger_login_btn_text', array( $this, 'test_title_filter' ) );
 		}
 
 
@@ -350,13 +348,6 @@
 			}
 
 			return true;
-		}
-
-
-		public function test_title_filter( $titles ) {
-			$titles = 'NEW LOGIN';
-
-			return $titles;
 		}
 
 
