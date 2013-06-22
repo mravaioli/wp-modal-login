@@ -145,7 +145,7 @@ jQuery(document).ready(function($) {
 			});
 		} else {
 			// if all else fails and we've hit here... something strange happen and notify the user.
-			$('.wpml-content > p.message').text('Something  Please refresh your window and try again.');
+			$('.wpml-content > p.message').text('Something went wrong. Please refresh your window and try again.');
 		}
 	});
 });

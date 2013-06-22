@@ -67,6 +67,10 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 
 Changelog
 =========
+2.1
+---
+* Added more room for customization for developers by adding a handful of apply_filter() instances throughout the plugin.
+
 2.0.3
 -----
 * Major updates to the translation of the plugin. It works now! Feel free to translate away! .POT file available in /langs/.
