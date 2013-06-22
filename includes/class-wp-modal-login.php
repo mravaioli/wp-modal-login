@@ -5,7 +5,7 @@
 	 *
 	 * This contains all the cool jazz that makes this plugin work.
 	 *
-	 * @version 2.1
+	 * @version 2.1beta
 	 * @since 1.0
 	 */
 	class Geissinger_WP_Modal_Login {

@@ -4,7 +4,7 @@ Donate link:
 Tags: modal login, popup login, pop-up login
 Requires at least: 3.5
 Tested up to: 3.6b4
-Stable tag: 2.1
+Stable tag: 2.1beta
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,7 +66,7 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 `<?php $modal_login = new Geissinger_WP_Modal_Login; echo $modal_login; ?>`
 
 == Changelog ==
-= 2.1 =
+= 2.1beta =
 * Added more room for customization for developers by adding a handful of apply_filter() instances throughout the plugin.
 
 = 2.0.3 =

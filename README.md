@@ -67,7 +67,7 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 
 Changelog
 =========
-2.1
+2.1beta
 ---
 * Added more room for customization for developers by adding a handful of apply_filter() instances throughout the plugin.
 
