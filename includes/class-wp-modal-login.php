@@ -23,9 +23,6 @@
 		public function __construct() {
 			global $wpml_settings;
 
-			// load our Localization.
-			add_action( 'plugins_loaded', array( $this, 'load_plugin_translations' ) );
-
 			// Register our source code with the wp_footer().
 			add_action( 'wp_footer', array( $this, 'login_form' ) );
 
@@ -48,18 +45,6 @@
 
 			// Allow us to run Ajax on the login.
 			add_action( 'wp_ajax_nopriv_ajaxlogin', array( $this, 'ajax_login' ) );
-		}
-
-
-		/**
-		 * Sets up and load our translation files
-		 * @return Void
-		 *
-		 * @version 1.0
-		 * @since 2.0.3
-		 */
-		public function load_plugin_translations() {
-			load_plugin_textdomain( 'geissinger-wpml', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
 		}
 
 
@@ -94,7 +79,7 @@
 				wp_localize_script( 'wpml-script', 'wpml_script', array(
 					'ajax' 		  => admin_url( 'admin-ajax.php' ),
 					'redirecturl' 	  => apply_filters( 'wpml_redirect_to', $_SERVER['REQUEST_URI'] ),
-					'loadingmessage' => __( 'checking credentials...' ),
+					'loadingmessage' => __( 'Checking Credentials...', 'geissinger-wpml' ),
 				) );
 			}
 		}
@@ -206,10 +191,10 @@
 		/**
 		 * When users register an account we want to sanitize the information and generate a new password, add to the database and email both the site admin and the new user account with an auto-generated password.
 		 * @param  String $user_login The username to be set to the new user account
-		 * @param  [type] $user_email The email to be set to the new user account
+		 * @param  String $user_email The email to be set to the new user account
 		 * @return String
 		 *
-		 * @version 1.0
+		 * @version 1.1
 		 * @since 2.0
 		 */
 		function register_new_user( $user_login, $user_email ) {
@@ -246,7 +231,7 @@
 			$user_id = wp_create_user( $sanitized_user_login, $user_pass, $user_email );
 
 			if ( ! $user_id ) {
-				$errors->add( 'registerfail', sprintf( __( 'Couldn\'t register you... please contact the site administrator', 'geissinger-wpml' ), get_option( 'admin_email' ) ) );
+				$errors->add( 'registerfail', __( 'Couldn\'t register you... please contact the site administrator', 'geissinger-wpml' ) );
 
 				return $errors;
 			}
@@ -264,7 +249,7 @@
 		 * @param  String $user_data The username or email we need to search for to reset the password.
 		 * @return Mixed
 		 *
-		 * @version 1.0
+		 * @version 1.1
 		 * @since 2.0
 		 */
 		function retrieve_password( $user_data ) {
@@ -315,19 +300,20 @@
 				// Now insert the new md5 key into the db
 				$wpdb->update( $wpdb->users, array( 'user_activation_key' => $key ), array( 'user_login' => $user_login ) );
 			}
-			$message = __( 'Someone requested that the password be reset for the following account:' ) . "\r\n\r\n";
+			$message = __( 'Someone requested that the password be reset for the following account:', 'geisinger-wpml' ) . "\r\n\r\n";
 			$message .= network_home_url( '/' ) . "\r\n\r\n";
 			$message .= sprintf( __( 'Username: %s' ), $user_login ) . "\r\n\r\n";
-			$message .= __( 'If this was a mistake, just ignore this email and nothing will happen.' ) . "\r\n\r\n";
-			$message .= __( 'To reset your password, visit the following address:' ) . "\r\n\r\n";
+			$message .= __( 'If this was a mistake, just ignore this email and nothing will happen.', 'geisinger-wpml' ) . "\r\n\r\n";
+			$message .= __( 'To reset your password, visit the following address:', 'geisinger-wpml' ) . "\r\n\r\n";
 			$message .= '<' . network_site_url( "wp-login.php?action=rp&key=$key&login=" . rawurlencode( $user_login ), 'login' ) . ">\r\n";
 
-			if ( is_multisite() )
+			if ( is_multisite() ) {
 				$blogname = $GLOBALS['current_site']->site_name;
-			else
+			} else {
 				// The blogname option is escaped with esc_html on the way into the database in sanitize_option
 				// we want to reverse this for the plain text arena of emails.
 				$blogname = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );
+			}
 
 			$title   = sprintf( __( '[%s] Password Reset' ), $blogname );
 			$title   = apply_filters( 'retrieve_password_title', $title );
@@ -395,14 +381,14 @@
 								<?php do_action( 'login_form' ); ?>
 
 								<p id="forgetmenot">
-									<label class="forgetmenot-label" for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" /> <?php esc_attr_e( 'Remember Me' ); ?></label>
+									<label class="forgetmenot-label" for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" /> <?php esc_attr_e( 'Remember Me', 'geissinger-wpml' ); ?></label>
 								</p>
 
 								<p class="submit">
 
 									<?php do_action( 'inside_wpml_login_submit' ); ?>
 
-									<input type="submit" name="wp-sumbit" id="wp-submit" class="button button-primary button-large" value="<?php esc_attr_e( 'Log In' ); ?>" />
+									<input type="submit" name="wp-sumbit" id="wp-submit" class="button button-primary button-large" value="<?php esc_attr_e( 'Log In', 'geissinger-wpml' ); ?>" />
 									<input type="hidden" name="login" value="true" />
 									<?php wp_nonce_field( 'ajax-form-nonce', 'security' ); ?>
 
@@ -515,7 +501,7 @@
 
 			echo '<a href="#forgotten" class="wpml-nav">' . __( 'Lost your password?', 'geissinger-wpml' ) . '</a>';
 
-			echo '<div class="hide-login"> | <a href="#login" class="wpml-nav">Back to Login</a></div>';
+			echo '<div class="hide-login"> | <a href="#login" class="wpml-nav">' . __( 'Back to Login', 'geissinger-wpml' ) . '</a></div>';
 
 			echo '</div>';
 		}
@@ -551,11 +537,11 @@
 
 			// Is the user logged in? If so, serve them the logout button, else we'll show the login button.
 			if ( is_user_logged_in() ) {
-				$link = '<a href="' . wp_logout_url( $logout_url ) . '" class="login">' . sprintf( sanitize_text_field( '%s' ), $logout_text ) . '</a>';
+				$link = '<a href="' . wp_logout_url( esc_url( $logout_url ) ) . '" class="logout wpml-btn">' . sprintf( _x( '%s', 'Logout Text', 'geissinger-wpml' ), sanitize_text_field( $logout_text ) ) . '</a>';
 				if ( $show_admin )
 					$link .= ' | <a href="' . esc_url( admin_url() ) . '">' . __( 'View Admin', 'geissinger-wpml' ) . '</a>';
 			} else {
-				$link = '<a href="#login-box" class="login login-window">' . sprintf( sanitize_text_field( '%s' ), $login_text ) . '</a></li>';
+				$link = '<a href="#login-box" class="login wpml-btn login-window">' . sprintf( _x( '%s', 'Login Text', 'geissinger-wpml' ), sanitize_text_field( $login_text ) ) . '</a></li>';
 			}
 
 			return $link;
@@ -572,15 +558,15 @@
 		 */
 		function modal_login_btn_shortcode( $atts ) {
 			extract( shortcode_atts( array(
-				'login_text'  => __( 'Login', 'geissinger-wpml' ),
-				'logout_text' => __( 'Logout', 'geissinger-wpml' ),
-				'logout_url'  => wp_logout_url( home_url() ),
+				'login_text'  => 'Login',
+				'logout_text' => 'Logout',
+				'logout_url'  => home_url(),
 			), $atts ) );
 
 			if ( is_user_logged_in() ) {
-				$link = '<a href="' . $logout_url . '" class="login">' . sprintf( sanitize_text_field( '%s' ), $logout_text ) . '</a>';
+				$link = '<a href="' . wp_logout_url( esc_url( $logout_url ) ) . '" class="logout wpml-btn">' . sprintf( _x( '%s', 'Shortcode Logout Text', 'geissinger-wpml' ), sanitize_text_field( $logout_text ) ) . '</a>';
 			} else {
-				$link = '<a href="#login-box" class="login login-window">' . sprintf( sanitize_text_field( '%s' ), $login_text ) . '</a></li>';
+				$link = '<a href="#login-box" class="login wpml-btn login-window">' . sprintf( _x( '%s', 'Shortcode Login Text', 'geissinger-wpml' ), sanitize_text_field( $login_text ) ) . '</a></li>';
 			}
 
 			return $link;

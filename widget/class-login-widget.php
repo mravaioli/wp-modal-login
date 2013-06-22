@@ -3,7 +3,7 @@
 	/**
 	 * Extends the WordPress widget class by specifying our own custom Modal Login Widget
 	 *
-	 * @version 1.1
+	 * @version 1.1.1
 	 * @since 1.0
 	 */
 	class Geissinger_WP_Modal_Login_Widget extends WP_Widget {
@@ -18,10 +18,10 @@
 		function Geissinger_WP_Modal_Login_Widget() {
 			$widget_opts = array(
 				'classname'   => 'wpml-widget',
-				'description' => __( 'Display a login/logout link that displays a pop-up login form', 'geissinger_wpml' ),
+				'description' => __( 'Display a login/logout link that displays a pop-up login form', 'geissinger-wpml' ),
 			);
 
-			$this->WP_Widget( 'Geissinger_WP_Modal_Login_Widget', __( 'WP Modal Login', 'geissinger_wpml' ), $widget_opts );
+			$this->WP_Widget( 'Geissinger_WP_Modal_Login_Widget', __( 'WP Modal Login', 'geissinger-wpml' ), $widget_opts );
 		}
 
 
@@ -37,10 +37,10 @@
 			extract( $args, EXTR_SKIP );
 
 			$widget_title = empty( $instance['widget-title'] ) ? '' : apply_filters( 'widget-title', $instance['widget-title'] );
-			$login_text   = empty( $instance['login-text'] )   ? '' : apply_filters( 'login-text', $instance['login-text'] );
-			$logout_text  = empty( $instance['logout-text'] )  ? '' : apply_filters( 'logout-text', $instance['logout-text'] );
-			$logout_url   = empty( $instance['logout-url'] )   ? '' : apply_filters( 'logout-url', $instance['logout-url'] );
-			$show_admin   = empty( $instance['show-admin'])    ? '' : apply_filters( 'show-admin', $instance['show-admin']);
+			$login_text   = empty( $instance['login-text'] )   ? '' : apply_filters( 'login-text',   $instance['login-text'] );
+			$logout_text  = empty( $instance['logout-text'] )  ? '' : apply_filters( 'logout-text',  $instance['logout-text'] );
+			$logout_url   = empty( $instance['logout-url'] )   ? '' : apply_filters( 'logout-url',   $instance['logout-url'] );
+			$show_admin   = empty( $instance['show-admin'])    ? '' : apply_filters( 'show-admin',   $instance['show-admin']);
 
 			echo $before_widget;
 

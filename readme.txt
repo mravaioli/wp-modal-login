@@ -3,8 +3,8 @@ Contributors: Brainfestation
 Donate link:
 Tags: modal login, popup login, pop-up login
 Requires at least: 3.5
-Tested up to: 3.6
-Stable tag: 2.0.2
+Tested up to: 3.6b4
+Stable tag: 2.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,11 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 `<?php $modal_login = new Geissinger_WP_Modal_Login; echo $modal_login; ?>`
 
 == Changelog ==
+= 2.0.3 =
+* Major updates to the translation of the plugin. It works now! Feel free to translate away! .POT file available in /langs/
+* Added new classes to the login button for easier style customizations.
+* Added Apply Filters to the redirecturl as so kindly provided by [@joshlevinson](http://wordpress.org/support/topic/redirect-36?replies=2)
+
 = 2.0.2 =
 * Fixed issue of login when using alongside other Ajax plugins.
 * Removed esc_url() from the wp_logout_url() as it created too much sanitization and caused logout issues.

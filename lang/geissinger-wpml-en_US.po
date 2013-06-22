@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WP Modal Login\n"
-"POT-Creation-Date: 2013-06-20 08:50-0800\n"
-"PO-Revision-Date: 2013-06-20 08:50-0800\n"
+"Project-Id-Version: WP Modal Login 2.0.3\n"
+"POT-Creation-Date: 2013-06-21 20:28-0800\n"
+"PO-Revision-Date: 2013-06-21 20:28-0800\n"
 "Last-Translator: Cole Geissinger <cole@colegeissinger.com>\n"
 "Language-Team: Cole Geissinger <cole@colegeissinger.com>\n"
 "Language: en_US\n"
@@ -10,36 +10,42 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.5\n"
-"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-KeywordsList: __;_n:1,2;_x:1,2c;_ex:1,2x;esc_attr__;esc_attr_e;_;"
+"gettext;gettext_noop\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-SearchPath-0: ..\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
 
-#: ../includes/class-wp-modal-login.php:97
-msgid "checking credentials..."
-msgstr "checking credentials…"
+#: ../wp-modal-login.php:72
+msgid "ERROR: WP Modal Login class not loaded."
+msgstr "ERROR: WP Modal Login class not loaded."
 
-#: ../includes/class-wp-modal-login.php:143
+#: ../includes/class-wp-modal-login.php:82
+msgid "Checking Credentials..."
+msgstr "Checking Credentials…"
+
+#: ../includes/class-wp-modal-login.php:128
 msgid "Wrong Username or Password!"
 msgstr "Wrong Username or Password!"
 
-#: ../includes/class-wp-modal-login.php:148
+#: ../includes/class-wp-modal-login.php:133
 msgid "Login Successful!"
 msgstr "Login Successful!"
 
-#: ../includes/class-wp-modal-login.php:170
+#: ../includes/class-wp-modal-login.php:155
 msgid "Registration complete. Please check your e-mail."
 msgstr "Registration complete. Please check your e-mail."
 
-#: ../includes/class-wp-modal-login.php:197
+#: ../includes/class-wp-modal-login.php:182
 msgid "Password Reset. Please check your email."
 msgstr "Password Reset. Please check your email."
 
-#: ../includes/class-wp-modal-login.php:222
+#: ../includes/class-wp-modal-login.php:207
 msgid "Please enter a username."
 msgstr "Please enter a username."
 
-#: ../includes/class-wp-modal-login.php:224
+#: ../includes/class-wp-modal-login.php:209
 msgid ""
 "This username is invalid because it uses illegal characters. Please enter a "
 "valid username."
@@ -47,66 +53,66 @@ msgstr ""
 "This username is invalid because it uses illegal characters. Please enter a "
 "valid username."
 
-#: ../includes/class-wp-modal-login.php:227
+#: ../includes/class-wp-modal-login.php:212
 msgid "This username is already registered. Please choose another one."
 msgstr "This username is already registered. Please choose another one."
 
-#: ../includes/class-wp-modal-login.php:232
+#: ../includes/class-wp-modal-login.php:217
 msgid "Please type your e-mail address."
 msgstr "Please type your e-mail address."
 
-#: ../includes/class-wp-modal-login.php:234
+#: ../includes/class-wp-modal-login.php:219
 msgid "The email address isn't correct."
 msgstr "The email address isn't correct."
 
-#: ../includes/class-wp-modal-login.php:237
+#: ../includes/class-wp-modal-login.php:222
 msgid "This email is already registered, please choose another one."
 msgstr "This email is already registered, please choose another one."
 
-#: ../includes/class-wp-modal-login.php:249
+#: ../includes/class-wp-modal-login.php:234
 msgid "Couldn't register you... please contact the site administrator"
 msgstr "Couldn't register you… please contact the site administrator"
 
-#: ../includes/class-wp-modal-login.php:276
+#: ../includes/class-wp-modal-login.php:261
 msgid "Please enter a username or e-mail address."
 msgstr "Please enter a username or e-mail address."
 
-#: ../includes/class-wp-modal-login.php:280
+#: ../includes/class-wp-modal-login.php:265
 msgid "There is no user registered with that email address."
 msgstr "There is no user registered with that email address."
 
-#: ../includes/class-wp-modal-login.php:292
+#: ../includes/class-wp-modal-login.php:277
 msgid "Invalid username or e-mail."
 msgstr "Invalid username or e-mail."
 
-#: ../includes/class-wp-modal-login.php:306
+#: ../includes/class-wp-modal-login.php:291
 msgid "Password reset is not allowed for this user"
 msgstr "Password reset is not allowed for this user"
 
-#: ../includes/class-wp-modal-login.php:318
+#: ../includes/class-wp-modal-login.php:303
 msgid "Someone requested that the password be reset for the following account:"
 msgstr ""
 "Someone requested that the password be reset for the following account:"
 
-#: ../includes/class-wp-modal-login.php:320
+#: ../includes/class-wp-modal-login.php:305
 #, php-format
 msgid "Username: %s"
 msgstr "Username: %s"
 
-#: ../includes/class-wp-modal-login.php:321
+#: ../includes/class-wp-modal-login.php:306
 msgid "If this was a mistake, just ignore this email and nothing will happen."
 msgstr "If this was a mistake, just ignore this email and nothing will happen."
 
-#: ../includes/class-wp-modal-login.php:322
+#: ../includes/class-wp-modal-login.php:307
 msgid "To reset your password, visit the following address:"
 msgstr "To reset your password, visit the following address:"
 
-#: ../includes/class-wp-modal-login.php:332
+#: ../includes/class-wp-modal-login.php:318
 #, php-format
 msgid "[%s] Password Reset"
 msgstr "[%s] Password Reset"
 
-#: ../includes/class-wp-modal-login.php:337
+#: ../includes/class-wp-modal-login.php:323
 msgid ""
 "The e-mail could not be sent. Possible reason: your host may have disabled "
 "the mail() function."
@@ -114,49 +120,65 @@ msgstr ""
 "The e-mail could not be sent. Possible reason: your host may have disabled "
 "the mail() function."
 
-#: ../includes/class-wp-modal-login.php:377
-#: ../includes/class-wp-modal-login.php:532
-#: ../includes/class-wp-modal-login.php:575
-msgid "Login"
-msgstr "Login"
-
-#: ../includes/class-wp-modal-login.php:386
-#: ../includes/class-wp-modal-login.php:428
-msgid "Username"
-msgstr "Username"
+#: ../includes/class-wp-modal-login.php:384
+msgid "Remember Me"
+msgstr "Remember Me"
 
 #: ../includes/class-wp-modal-login.php:391
-msgid "Password"
-msgstr "Password"
+msgid "Log In"
+msgstr "Log In"
 
-#: ../includes/class-wp-modal-login.php:419
-#: ../includes/class-wp-modal-login.php:513
+#: ../includes/class-wp-modal-login.php:429
+msgid "Sign Up"
+msgstr "Sign Up"
+
+#: ../includes/class-wp-modal-login.php:463
+msgid "Reset Password"
+msgstr "Reset Password"
+
+#: ../includes/class-wp-modal-login.php:499
 msgid "Register"
 msgstr "Register"
 
-#: ../includes/class-wp-modal-login.php:433
-msgid "Email"
-msgstr "Email"
-
-#: ../includes/class-wp-modal-login.php:458
-msgid "Forgotten Password?"
-msgstr "Forgotten Password?"
-
-#: ../includes/class-wp-modal-login.php:467
-msgid "Username or Email"
-msgstr "Username or Email"
-
-#: ../includes/class-wp-modal-login.php:516
+#: ../includes/class-wp-modal-login.php:502
 msgid "Lost your password?"
 msgstr "Lost your password?"
 
-#: ../includes/class-wp-modal-login.php:556
+#: ../includes/class-wp-modal-login.php:504
+msgid "Back to Login"
+msgstr "Back to Login"
+
+#: ../includes/class-wp-modal-login.php:518
+msgid "Login"
+msgstr "Login"
+
+#: ../includes/class-wp-modal-login.php:540
+#, php-format
+msgctxt "Logout Text"
+msgid "%s"
+msgstr "%s"
+
+#: ../includes/class-wp-modal-login.php:542
 msgid "View Admin"
 msgstr "View Admin"
 
-#: ../includes/class-wp-modal-login.php:576
-msgid "Logout"
-msgstr "Logout"
+#: ../includes/class-wp-modal-login.php:544
+#, php-format
+msgctxt "Login Text"
+msgid "%s"
+msgstr "%s"
+
+#: ../includes/class-wp-modal-login.php:567
+#, php-format
+msgctxt "Shortcode Logout Text"
+msgid "%s"
+msgstr "%s"
+
+#: ../includes/class-wp-modal-login.php:569
+#, php-format
+msgctxt "Shortcode Login Text"
+msgid "%s"
+msgstr "%s"
 
 #: ../includes/wpml-admin-page.php:31 ../widget/class-login-widget.php:24
 msgid "WP Modal Login"
@@ -165,10 +187,6 @@ msgstr "WP Modal Login"
 #: ../includes/wpml-admin-page.php:49
 msgid "You do not have sufficient permissions to access this page."
 msgstr "You do not have sufficient permissions to access this page."
-
-#: ../includes/wpml-admin-page.php:53
-msgid "WordPress Modal Login Options"
-msgstr "WordPress Modal Login Options"
 
 #: ../includes/wpml-admin-page.php:84
 msgid "Modal Theme"
@@ -271,48 +289,54 @@ msgstr "%d"
 msgid "Oops! You can't call this page directly."
 msgstr "Oops! You can't call this page directly."
 
-#: ../includes/tinymce-shortcode-btn/popup.php:25
-msgid "Add Modal Login Shortcode"
-msgstr "Add Modal Login Shortcode"
-
-#: ../includes/tinymce-shortcode-btn/popup.php:46
-msgid "Login Text"
-msgstr "Login Text"
-
-#: ../includes/tinymce-shortcode-btn/popup.php:54
-msgid "Logout Text"
-msgstr "Logout Text"
-
-#: ../includes/tinymce-shortcode-btn/popup.php:62
-msgid "Logout Redirect URL"
-msgstr "Logout Redirect URL"
-
 #: ../widget/class-login-widget.php:21
 msgid "Display a login/logout link that displays a pop-up login form"
 msgstr "Display a login/logout link that displays a pop-up login form"
 
-#: ../widget/views/form.php:2
-msgid "Title:"
-msgstr "Title:"
+#~ msgid "Logout"
+#~ msgstr "Logout"
 
-#: ../widget/views/form.php:7
-msgid "Login Text:"
-msgstr "Login Text:"
+#~ msgid "Username"
+#~ msgstr "Username"
 
-#: ../widget/views/form.php:12
-msgid "Logout Text:"
-msgstr "Logout Text:"
+#~ msgid "Password"
+#~ msgstr "Password"
 
-#: ../widget/views/form.php:17
-msgid "Logout Redirection URL:"
-msgstr "Logout Redirection URL:"
+#~ msgid "Email"
+#~ msgstr "Email"
 
-#: ../widget/views/form.php:22
-msgid "Show Admin Link:"
-msgstr "Show Admin Link:"
+#~ msgid "Forgotten Password?"
+#~ msgstr "Forgotten Password?"
 
-#~ msgid "Back to Login"
-#~ msgstr "Back to Login"
+#~ msgid "Username or Email"
+#~ msgstr "Username or Email"
 
-#~ msgid "%a"
-#~ msgstr "%a"
+#~ msgid "WordPress Modal Login Options"
+#~ msgstr "WordPress Modal Login Options"
+
+#~ msgid "Add Modal Login Shortcode"
+#~ msgstr "Add Modal Login Shortcode"
+
+#~ msgid "Login Text"
+#~ msgstr "Login Text"
+
+#~ msgid "Logout Text"
+#~ msgstr "Logout Text"
+
+#~ msgid "Logout Redirect URL"
+#~ msgstr "Logout Redirect URL"
+
+#~ msgid "Title:"
+#~ msgstr "Title:"
+
+#~ msgid "Login Text:"
+#~ msgstr "Login Text:"
+
+#~ msgid "Logout Text:"
+#~ msgstr "Logout Text:"
+
+#~ msgid "Logout Redirection URL:"
+#~ msgstr "Logout Redirection URL:"
+
+#~ msgid "Show Admin Link:"
+#~ msgstr "Show Admin Link:"

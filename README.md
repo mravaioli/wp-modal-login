@@ -67,6 +67,12 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 
 Changelog
 =========
+2.0.3
+-----
+* Major updates to the translation of the plugin. It works now! Feel free to translate away! .POT file available in /langs/.
+* Added new classes to the login button for easier style customizations.
+* Added Apply Filters to the redirecturl as so kindly provided by [@joshlevinson](http://wordpress.org/support/topic/redirect-36?replies=2)
+
 2.0.2
 -----
 * Fixed issue of login when using alongside other Ajax plugins.
