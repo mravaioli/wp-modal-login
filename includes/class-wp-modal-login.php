@@ -5,13 +5,13 @@
 	 *
 	 * This contains all the cool jazz that makes this plugin work.
 	 *
-	 * @version 2.0.3
+	 * @version 2.0.4
 	 * @since 1.0
 	 */
 	class Geissinger_WP_Modal_Login {
 
 		// Set the version number
-		public $plugin_version = '2.0.3';
+		public $plugin_version = '2.0.4';
 
 
 		/**
@@ -77,7 +77,7 @@
 			// Only run our ajax stuff when the user isn't logged in.
 			if ( ! is_user_logged_in() ) {
 				wp_localize_script( 'wpml-script', 'wpml_script', array(
-					'ajax' 		  => admin_url( 'admin-ajax.php' ),
+					'ajax' 		     => admin_url( 'admin-ajax.php' ),
 					'redirecturl' 	  => apply_filters( 'wpml_redirect_to', $_SERVER['REQUEST_URI'] ),
 					'loadingmessage' => __( 'Checking Credentials...', 'geissinger-wpml' ),
 				) );

@@ -67,6 +67,10 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 
 Changelog
 =========
+2.0.4
+-----
+* Fixed a display issue in the admin page. All settings showing as '01'.
+
 2.0.3
 -----
 * Major updates to the translation of the plugin. It works now! Feel free to translate away! .POT file available in /langs/.
