@@ -66,6 +66,10 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 `<?php $modal_login = new Geissinger_WP_Modal_Login; echo $modal_login; ?>`
 
 == Changelog ==
+= 2.0.5 =
+* Fixed overly sanitized passwords when logging in (it was stripping out special characters).
+* Added Spanish translation from David Portillo (wethinkapp.com).
+
 = 2.0.4 =
 * Fixed a display issue in the admin page. All settings showing as '01'.
 

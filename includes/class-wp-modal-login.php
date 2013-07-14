@@ -5,13 +5,13 @@
 	 *
 	 * This contains all the cool jazz that makes this plugin work.
 	 *
-	 * @version 2.0.4
+	 * @version 2.0.5
 	 * @since 1.0
 	 */
 	class Geissinger_WP_Modal_Login {
 
 		// Set the version number
-		public $plugin_version = '2.0.4';
+		public $plugin_version = '2.0.5';
 
 
 		/**
@@ -103,7 +103,7 @@
 		 * The main function behind a large section of the Ajax-y goodness.
 		 * @return void
 		 *
-		 * @version 1.1.1
+		 * @version 1.1.2
 		 * @since 2.0
 		 */
 		public function ajax_login() {
@@ -117,8 +117,8 @@
 			// Check that we are submitting the login form
 			if ( isset( $_REQUEST['login'] ) )  {
 				$data['user_login'] 	  = sanitize_user( $_REQUEST['username'] );
-				$data['user_password'] = esc_attr( $_REQUEST['password'] );
-				$data['rememberme'] 	  = esc_attr( $_REQUEST['rememberme'] );
+				$data['user_password'] = sanitize_text_field( $_REQUEST['password'] );
+				$data['rememberme'] 	  = sanitize_text_field( $_REQUEST['rememberme'] );
 				$user_login 			  = wp_signon( $data, false );
 
 				// Check the results of our login and provide the needed feedback

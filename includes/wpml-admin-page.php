@@ -16,7 +16,7 @@
 	 * @since 2.0
 	 */
 	function geissinger_admin_resources() {
-		wp_enqueue_script( 'wpml-admin-script', plugins_url( 'js/wp-modal-login-admin.min.js', dirname( __FILE__ ) ), array( 'jquery' ), '2.0.4', true );
+		wp_enqueue_script( 'wpml-admin-script', plugins_url( 'js/wp-modal-login-admin.min.js', dirname( __FILE__ ) ), array( 'jquery' ), '2.0.5', true );
 	}
 
 
