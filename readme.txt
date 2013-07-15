@@ -3,8 +3,8 @@ Contributors: Brainfestation
 Donate link:
 Tags: modal login, popup login, pop-up login
 Requires at least: 3.5
-Tested up to: 3.6b4
-Stable tag: 2.1beta
+Tested up to: 3.6
+Stable tag: 2.1b-071413
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,8 +66,15 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 `<?php $modal_login = new Geissinger_WP_Modal_Login; echo $modal_login; ?>`
 
 == Changelog ==
-= 2.1beta =
+= 2.1b-071413 =
 * Added more room for customization for developers by adding a handful of apply_filter() instances throughout the plugin.
+
+= 2.0.5 =
+* Fixed overly sanitized passwords when logging in (it was stripping out special characters).
+* Added Spanish translation from David Portillo (wethinkapp.com).
+
+= 2.0.4 =
+* Fixed a display issue in the admin page. All settings showing as '01'.
 
 = 2.0.3 =
 * Major updates to the translation of the plugin. It works now! Feel free to translate away! .POT file available in /langs/

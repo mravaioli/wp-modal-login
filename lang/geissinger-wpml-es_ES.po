@@ -1,0 +1,369 @@
+# Copyright (C) 2013 WP Modal Login
+# This file is distributed under the same license as the WP Modal Login package.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Modal Login 2.0.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-modal-login\n"
+"POT-Creation-Date: 2013-06-22 04:30:31+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-07-14 11:00-0800\n"
+"Last-Translator: Cole Geissinger <cole@colegeissinger.com>\n"
+"Language-Team: David Portillo <david@wethinkapp.com>\n"
+"X-Generator: Poedit 1.5.7\n"
+"Language: es_ES\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-KeywordsList: __;_n:1,2;_x:1,2c;_ex:1,2x;esc_attr__;esc_attr_e;_;"
+"gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ..\n"
+
+#: includes/class-wp-modal-login.php:82
+msgid "Checking Credentials..."
+msgstr "Comprobando usuario..."
+
+#: includes/class-wp-modal-login.php:128
+msgid "Wrong Username or Password!"
+msgstr "Usuario o contraseña incorrectos!"
+
+#: includes/class-wp-modal-login.php:133
+msgid "Login Successful!"
+msgstr "Acceso correcto!!"
+
+#: includes/class-wp-modal-login.php:155
+msgid "Registration complete. Please check your e-mail."
+msgstr "Registro completo. Por favor, compruebe su e-mail."
+
+#: includes/class-wp-modal-login.php:182
+msgid "Password Reset. Please check your email."
+msgstr "Contraseña cambiada. Por favor, compruebe su email."
+
+#: includes/class-wp-modal-login.php:207
+msgid "Please enter a username."
+msgstr "Por favor, entre un nombre de usuario"
+
+#: includes/class-wp-modal-login.php:209
+msgid ""
+"This username is invalid because it uses illegal characters. Please enter a "
+"valid username."
+msgstr ""
+"Este nombre no es válido porque usa carácteres incorrectos. Por favor, "
+"introduzca un nombre de usuario válido."
+
+#: includes/class-wp-modal-login.php:212
+msgid "This username is already registered. Please choose another one."
+msgstr "Este nombre de usuario ya está registrado. Por favor, escoja otro."
+
+#: includes/class-wp-modal-login.php:217
+msgid "Please type your e-mail address."
+msgstr "Por favor, escriba su dirección de e-mail."
+
+#: includes/class-wp-modal-login.php:219
+msgid "The email address isn't correct."
+msgstr "Esta dirección de e-mail es incorrecta."
+
+#: includes/class-wp-modal-login.php:222
+msgid "This email is already registered, please choose another one."
+msgstr "Este e-mail ya está registrado, por favor, escoja otro."
+
+#: includes/class-wp-modal-login.php:234
+msgid "Couldn't register you... please contact the site administrator"
+msgstr "No hemos podido registrarle… por favor, contacte con el administrador"
+
+#: includes/class-wp-modal-login.php:261
+msgid "Please enter a username or e-mail address."
+msgstr "Por favor, entre el nombre de usuario o la dirección de e-mail."
+
+#: includes/class-wp-modal-login.php:265
+msgid "There is no user registered with that email address."
+msgstr "No hay ningún usuario registrado con este e-mail."
+
+#: includes/class-wp-modal-login.php:277
+msgid "Invalid username or e-mail."
+msgstr "Nombre de usuario o e-mail incorrecto."
+
+#: includes/class-wp-modal-login.php:291
+msgid "Password reset is not allowed for this user"
+msgstr "El cambio de contraseña no está permitido para este usuario."
+
+#: includes/class-wp-modal-login.php:303
+msgid "Someone requested that the password be reset for the following account:"
+msgstr "Alguien ha pedido un cambio de contraseña para esta cuenta:"
+
+#: includes/class-wp-modal-login.php:305
+msgid "Username: %s"
+msgstr "Nombre usuario: %s"
+
+#: includes/class-wp-modal-login.php:306
+msgid "If this was a mistake, just ignore this email and nothing will happen."
+msgstr "Si esto es un error, ignore este e-mail y nada sucederá."
+
+#: includes/class-wp-modal-login.php:307
+msgid "To reset your password, visit the following address:"
+msgstr "Para cambiar la contraseña, visite la siguiente dirección:"
+
+#: includes/class-wp-modal-login.php:318
+msgid "[%s] Password Reset"
+msgstr "[%s] Contraseña cambiada"
+
+#: includes/class-wp-modal-login.php:323
+msgid ""
+"The e-mail could not be sent. Possible reason: your host may have disabled "
+"the mail() function."
+msgstr ""
+"No se ha podido enviar el e-mail. Posible razón: Su servidor debe haber "
+"desactivado la función de envío de mail."
+
+#: includes/class-wp-modal-login.php:363 includes/class-wp-modal-login.php:518
+msgid "Login"
+msgstr "Login"
+
+#: includes/class-wp-modal-login.php:372 includes/class-wp-modal-login.php:414
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: includes/class-wp-modal-login.php:377
+msgid "Password"
+msgstr "Contraseña"
+
+#: includes/class-wp-modal-login.php:384
+msgid "Remember Me"
+msgstr "Recuérdame"
+
+#: includes/class-wp-modal-login.php:391
+msgid "Log In"
+msgstr "Log in"
+
+#: includes/class-wp-modal-login.php:405 includes/class-wp-modal-login.php:499
+msgid "Register"
+msgstr "Registro"
+
+#: includes/class-wp-modal-login.php:419
+msgid "Email"
+msgstr "E-mail"
+
+#: includes/class-wp-modal-login.php:429
+msgid "Sign Up"
+msgstr "Inscribirse"
+
+#: includes/class-wp-modal-login.php:444
+msgid "Forgotten Password?"
+msgstr "Contraseña olvidada?"
+
+#: includes/class-wp-modal-login.php:453
+msgid "Username or Email"
+msgstr "Nombre de usuario o E-mail"
+
+#: includes/class-wp-modal-login.php:463
+msgid "Reset Password"
+msgstr "Cambiar contraseña"
+
+#: includes/class-wp-modal-login.php:502
+msgid "Lost your password?"
+msgstr "Contraseña perdida?"
+
+#: includes/class-wp-modal-login.php:504
+msgid "Back to Login"
+msgstr "Volver al login"
+
+#: includes/class-wp-modal-login.php:540
+msgctxt "Logout Text"
+msgid "%s"
+msgstr ""
+
+#: includes/class-wp-modal-login.php:542
+msgid "View Admin"
+msgstr "Ver Administración"
+
+#: includes/class-wp-modal-login.php:544
+msgctxt "Login Text"
+msgid "%s"
+msgstr ""
+
+#: includes/class-wp-modal-login.php:567
+msgctxt "Shortcode Logout Text"
+msgid "%s"
+msgstr ""
+
+#: includes/class-wp-modal-login.php:569
+msgctxt "Shortcode Login Text"
+msgid "%s"
+msgstr ""
+
+#: includes/tinymce-shortcode-btn/popup.php:14
+msgid "Oops! You can't call this page directly."
+msgstr "Lo siento, no puede acceder a esta página directamente"
+
+#: includes/tinymce-shortcode-btn/popup.php:25
+msgid "Add Modal Login Shortcode"
+msgstr "Añadir shortcode para el acceso"
+
+#: includes/tinymce-shortcode-btn/popup.php:46
+msgid "Login Text"
+msgstr "Texto de login"
+
+#: includes/tinymce-shortcode-btn/popup.php:54
+msgid "Logout Text"
+msgstr "Texto de Logout"
+
+#: includes/tinymce-shortcode-btn/popup.php:62
+msgid "Logout Redirect URL"
+msgstr "URL de redirección del Logout"
+
+#. #-#-#-#-#  plugin.pot (WP Modal Login 2.0.3)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: includes/wpml-admin-page.php:31 widget/class-login-widget.php:24
+msgid "WP Modal Login"
+msgstr ""
+
+#: includes/wpml-admin-page.php:49
+msgid "You do not have sufficient permissions to access this page."
+msgstr "No tiene suficientes permisos para acceder a esta página."
+
+#: includes/wpml-admin-page.php:53
+msgid "WordPress Modal Login Options"
+msgstr "WordPress Modal Login opciones"
+
+#: includes/wpml-admin-page.php:84
+msgid "Modal Theme"
+msgstr "Tema"
+
+#: includes/wpml-admin-page.php:85
+msgid "Widget Options"
+msgstr "Opciones del Widget"
+
+#: includes/wpml-admin-page.php:89
+msgid "Show Shortcode Button"
+msgstr "Mostrar botón del Shortcode"
+
+#: includes/wpml-admin-page.php:94
+msgid "Enable the shortcode button found with the page & post editor."
+msgstr "Activar el botón de shortcode para el editor de páginas y posts."
+
+#: includes/wpml-admin-page.php:96
+msgid "Select A Theme"
+msgstr "Seleccione un tema"
+
+#: includes/wpml-admin-page.php:101
+msgid "Default"
+msgstr "Por defecto"
+
+#: includes/wpml-admin-page.php:102
+msgid "Theme 1"
+msgstr "Tema 1"
+
+#: includes/wpml-admin-page.php:103
+msgid "Theme 2"
+msgstr "Tema 2"
+
+#: includes/wpml-admin-page.php:104
+msgid "None"
+msgstr "Ninguno"
+
+#: includes/wpml-admin-page.php:106
+msgid ""
+"Select a new theme for your modal login window. You may choose to load no "
+"theme and load in your own custom CSS styles if you wish."
+msgstr ""
+"Seleccione un nuevo tema para la ventana de login. Puede escoger no cargar "
+"ningún tema y cargar sus estilos de CSS si lo desea."
+
+#: includes/wpml-admin-page.php:108
+msgid "Add Custom CSS"
+msgstr "Añadir su propio CSS"
+
+#: includes/wpml-admin-page.php:113
+msgid ""
+"Add custom CSS if you wish to over ride any styles in the selected theme."
+msgstr ""
+"Añadir su propio CSS si quiere reemplazar cualquier estilo en el tema "
+"seleccionado."
+
+#: includes/wpml-admin-page.php:115
+msgid "Custom CSS"
+msgstr "CSS propio"
+
+#: includes/wpml-admin-page.php:120
+msgid "Add your custom CSS code."
+msgstr "Añadir su propio código CSS"
+
+#: includes/wpml-admin-page.php:122
+msgid "Disable Register Button"
+msgstr "Desactivar el botón de registro"
+
+#: includes/wpml-admin-page.php:127
+msgid ""
+"Remove the \"Register\" link in the modal window. (Useful if you want to use "
+"a separate registration page)"
+msgstr ""
+"Quitar el enlace de \"Registro\" en la ventana. (Útil si quiere utilizar una "
+"página de registro separada)"
+
+#: includes/wpml-admin-page.php:132
+msgid "Show Widget"
+msgstr "Mostrar Widget"
+
+#: includes/wpml-admin-page.php:137
+msgid "Enable the widget found in Appearance > Widgets."
+msgstr "Activar el widget localizado en Apariencia > Widgets."
+
+#: includes/wpml-admin-page.php:156
+msgid "Customize the look and feel of the modal login window and other options"
+msgstr "Personalizar el aspecto de la ventana de acceso y otras opciones"
+
+#: includes/wpml-admin-page.php:168
+msgid "Customize the options for the Widget"
+msgstr "Personalizar las opciones para el widget"
+
+#: includes/wpml-admin-page.php:187 includes/wpml-admin-page.php:208
+#: includes/wpml-admin-page.php:229 includes/wpml-admin-page.php:232
+msgid "%d"
+msgstr ""
+
+#: widget/class-login-widget.php:21
+msgid "Display a login/logout link that displays a pop-up login form"
+msgstr ""
+"Mostrar un enlace de Acceso/Logout que se muestra en un formulario emergente"
+
+#: widget/views/form.php:12
+msgid "Title:"
+msgstr "Título:"
+
+#: widget/views/form.php:17
+msgid "Login Text:"
+msgstr "Texto de login:"
+
+#: widget/views/form.php:22
+msgid "Logout Text:"
+msgstr "Texto de logout:"
+
+#: widget/views/form.php:27
+msgid "Logout Redirection URL:"
+msgstr "URL de redirección de logout:"
+
+#: widget/views/form.php:32
+msgid "Show Admin Link:"
+msgstr "Mostrar enlace a la administración:"
+
+#: wp-modal-login.php:72
+msgid "ERROR: WP Modal Login class not loaded."
+msgstr "ERROR: No se ha podido cargar la clase WP Modal Login"
+
+#. Plugin URI of the plugin/theme
+msgid "http://wp-modal-login.colegeissinger.com"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "A highly configurable and versatile modal (pop-up) login form."
+msgstr "Un formulario emergente (pop-up) versátil y configurable"
+
+#. Author of the plugin/theme
+msgid "Cole Geissinger"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.colegeissinger.com"
+msgstr ""

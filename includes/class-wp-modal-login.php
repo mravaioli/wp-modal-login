@@ -5,13 +5,12 @@
 	 *
 	 * This contains all the cool jazz that makes this plugin work.
 	 *
-	 * @version 2.1beta
-	 * @since 1.0
+	 * @version 2.1b-071413
 	 */
 	class Geissinger_WP_Modal_Login {
 
 		// Set the version number
-		public $plugin_version = '2.1';
+		public $plugin_version = '2.1b-071413';
 
 
 		/**
@@ -52,14 +51,13 @@
 		 * Add all of our scripts and styles with WordPress.
 		 * @return void
 		 *
-		 * @version 2.1
+		 * @version 2.1b-071413
 		 * @since 1.0
 		 */
 		public function print_resources() {
 			global $wpml_settings;
 
 			$theme = $wpml_settings['modal-theme'];
-
 
 			wp_enqueue_style( 'wpml-styles', plugins_url( 'css/wp-modal-login.css', dirname( __FILE__ ) ), null, $this->plugin_version, 'screen' );
 
@@ -78,7 +76,7 @@
 			if ( ! is_user_logged_in() ) {
 				$localized = array(
 					'ajax' 		     => admin_url( 'admin-ajax.php' ),
-					'redirecturl' 	  => $_SERVER['REQUEST_URI'],
+					'redirecturl' 	  => apply_filters( 'wpml_redirect_to', $_SERVER['REQUEST_URI'] ), // wpml_redirect_to deprecated as of 2.1. Please use geissinger_localized_info instead
 					'loadingmessage' => __( 'Checking Credentials...', 'geissinger-wpml' ),
 				);
 				wp_localize_script( 'wpml-script', 'wpml_script', apply_filters( 'geissinger_localized_info', $localized ) );
@@ -104,7 +102,7 @@
 		 * The main function behind a large section of the Ajax-y goodness.
 		 * @return void
 		 *
-		 * @version 1.1.1
+		 * @version 1.1.2
 		 * @since 2.0
 		 */
 		public function ajax_login() {
@@ -137,8 +135,8 @@
 			// Check that we are submitting the login form
 			if ( isset( $_REQUEST['login'] ) )  {
 				$data['user_login'] 	  = sanitize_user( $_REQUEST['username'] );
-				$data['user_password'] = esc_attr( $_REQUEST['password'] );
-				$data['rememberme'] 	  = esc_attr( $_REQUEST['rememberme'] );
+				$data['user_password'] = sanitize_text_field( $_REQUEST['password'] );
+				$data['rememberme'] 	  = sanitize_text_field( $_REQUEST['rememberme'] );
 				$user_login 			  = wp_signon( $data, false );
 
 				// Check the results of our login and provide the needed feedback
@@ -362,7 +360,7 @@
 		 *          inside_wpml_form_last		Add items at the end of the form wrapper after the submit button.
 		 *          after_wpml_form				Add items after the form iteself.
 		 *
-		 * @version 2.0.1
+		 * @version 2.1b-071413
 		 * @since 1.0
 		 */
 		public function login_form() {
@@ -520,7 +518,7 @@
 		 * Adds some additional fields to the login_form(). Hooked through 'after_wpml_form'.
 		 * @return void
 		 *
-		 * @version 1.1
+		 * @version 2.1b-071413
 		 * @since 2.0
 		 */
 		public function additional_options() {
@@ -559,7 +557,7 @@
 	 	 * @param Boolean $show_btn	 Apply a default button as defined in the admin options. (added v2.1)
 		 * @return HTML
 		 *
-		 * @version 1.2
+		 * @version 2.1b-071413
 		 * @since 1.0
 		 */
 		public function modal_login_btn( $login_text = 'Login', $logout_text = 'Logout', $logout_url = '', $show_admin = true, $class = array(), $show_btn = false ) {
@@ -614,7 +612,7 @@
 		 * @param  Array $atts Contains all or any attributes used on the shortcode.
 		 * @return String
 		 *
-		 * @version 1.0
+		 * @version 2.1b-071413
 		 * @since 1.0
 		 */
 		function modal_login_btn_shortcode( $atts ) {

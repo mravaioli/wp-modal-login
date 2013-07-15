@@ -16,7 +16,7 @@
 	 * @since 2.0
 	 */
 	function geissinger_admin_resources() {
-		wp_enqueue_script( 'wpml-admin-script', plugins_url( 'js/wp-modal-login-admin.min.js', dirname( __FILE__ ) ), array( 'jquery' ), '2.0.1', true );
+		wp_enqueue_script( 'wpml-admin-script', plugins_url( 'js/wp-modal-login-admin.min.js', dirname( __FILE__ ) ), array( 'jquery' ), '2.0.5', true );
 	}
 
 
@@ -70,7 +70,7 @@
 	 * Registers all of our sections and fields with the Settings API (http://codex.wordpress.org/Settings_API)
 	 * @return void
 	 *
-	 * @version 1.0
+	 * @version 1.
 	 * @since 2.0
 	 */
 	function geissinger_init_settings_registration() {
@@ -174,7 +174,7 @@
 	 * @param  Array $args An array of our arguments passed in the add_settings_field() function
 	 * @return HTML
 	 *
-	 * @version 1.0
+	 * @version 1.1
 	 * @since 2.0
 	 */
 	function geissinger_settings_field_textarea( $args ) {
@@ -184,7 +184,7 @@
 		// Get the options from the database
 		$options = get_option( $args['options-name'] ); ?>
 
-		<label for="<?php echo $args['id']; ?>"><?php echo printf( __( '%d', 'geissinger-wpml' ), esc_attr( $args['label'] ) ); ?></label><br />
+		<label for="<?php echo $args['id']; ?>"><?php esc_attr_e( $args['label'] ); ?></label><br />
 		<textarea name="<?php echo $name; ?>" id="<?php echo $args['id']; ?>" class="large-text<?php if ( ! empty( $args['class'] ) ) echo ' ' . $args['class']; ?>" cols="30" rows="10"><?php esc_attr_e( $options[ $args['id'] ] ); ?></textarea>
 	<?php }
 
@@ -194,7 +194,7 @@
 	 * @param  Array $args An array of our arguments passed in the add_settings_field() function
 	 * @return HTML
 	 *
-	 * @version 1.0
+	 * @version 1.1
 	 * @since 2.0
 	 */
 	function geissinger_settings_field_checkbox( $args ) {
@@ -205,7 +205,7 @@
 		$options = get_option( $args['options-name'] ); ?>
 
 		<input type="checkbox" name="<?php echo $name; ?>" id="<?php echo $args['id']; ?>" <?php if ( ! empty( $args['class'] ) ) echo 'class="' . $args['class'] . '" '; ?>value="<?php esc_attr_e( $args['value'] ); ?>" <?php if ( isset( $options[ $args['id'] ] ) ) checked( $args['value'], $options[ $args['id'] ], true ); ?> />
-		<label for="<?php echo $args['id']; ?>"><?php echo printf( __( '%d', 'geissinger-wpml' ), esc_attr( $args['label'] ) ); ?></label>
+		<label for="<?php echo $args['id']; ?>"><?php esc_attr_e( $args['label'] ); ?></label>
 	<?php }
 
 
@@ -214,7 +214,7 @@
 	 * @param  Array $args An array of our arguments passed in the add_settings_field() function
 	 * @return HTML
 	 *
-	 * @version 1.0
+	 * @version 1.1
 	 * @since 2.0
 	 */
 	function geissinger_settings_field_select( $args ) {
@@ -226,10 +226,10 @@
 
 		<select name="<?php echo $name; ?>" id="<?php echo $args['id']; ?>" <?php if ( ! empty( $args['class'] ) ) echo 'class="' . $args['class'] . '" '; ?>>
 			<?php foreach ( $args['value'] as $key => $value ) : ?>
-				<option value="<?php esc_attr_e( $key ); ?>"<?php if ( isset( $options[ $args['id'] ] ) ) selected( $key, $options[ $args['id'] ], true ); ?>><?php echo printf( __( '%d', 'geissinger-wpml' ), esc_attr( $value ) ); ?></option>
+				<option value="<?php esc_attr_e( $key ); ?>"<?php if ( isset( $options[ $args['id'] ] ) ) selected( $key, $options[ $args['id'] ], true ); ?>><?php esc_attr_e( $value ); ?></option>
 			<?php endforeach; ?>
 		</select>
-		<label for="<?php echo $args['id']; ?>" style="display:block;"><?php echo printf( __( '%d', 'geissinger-wpml' ), esc_attr( $args['label'] ) ); ?></label>
+		<label for="<?php echo $args['id']; ?>" style="display:block;"><?php esc_attr_e( $args['label'] ); ?></label>
 	<?php }
 
 
