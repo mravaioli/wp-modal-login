@@ -533,15 +533,15 @@
 
 			echo '<div id="additional-settings">';
 
-			// Check if we have disabled this via the admin options first.
-			if ( ! isset( $wpml_settings['remove-reg'] ) ) {
-				if ( (get_option( 'users_can_register' ) && ! is_multisite() ) || ( $multisite_reg == 'all' || $multisite_reg == 'blog' || $multisite_reg == 'user' ) )
-					echo '<span class="register-btn"><a href="#register" class="wpml-nav">' . esc_attr( $register_link ) . '</a></span>';
-			}
+				// Check if we have disabled this via the admin options first.
+				if ( ! isset( $wpml_settings['remove-reg'] ) ) {
+					if ( (get_option( 'users_can_register' ) && ! is_multisite() ) || ( $multisite_reg == 'all' || $multisite_reg == 'blog' || $multisite_reg == 'user' ) )
+						echo '<span class="register-btn footer-links"><a href="#register" class="wpml-nav">' . esc_attr( $register_link ) . '</a></span>';
+				}
 
-			echo '<a href="#forgotten" class="wpml-nav">' . esc_attr( $forgotten_link ) . '</a>';
+				echo '<span class="forgotten-btn footer-links"><a href="#forgotten" class="wpml-nav">' . esc_attr( $forgotten_link ) . '</a></span>';
 
-			echo '<div class="hide-login"> | <a href="#login" class="wpml-nav">' . esc_attr( $login_link ) . '</a></div>';
+				echo '<span class="login-btn footer-links"><a href="#login" class="wpml-nav">' . esc_attr( $login_link ) . '</a></span>';
 
 			echo '</div>';
 		}

@@ -38,11 +38,21 @@
 			content:"\22";
 		}
 	}
-	.hide-login {
-		display:none;
-	}
 	.inline {
 		display:inline;
+	}
+	.footer-links {
+		margin-right:$spacing - 10;
+		padding-right:$spacing - 10;
+	}
+	.register-btn, .forgotten-btn {
+		border-right:1px solid #fff;
+	}
+	.no-border {
+		border-right:none;
+	}
+	.hide {
+		display:none;
 	}
 }
 

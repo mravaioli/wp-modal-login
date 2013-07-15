@@ -37,25 +37,22 @@ jQuery(document).ready(function($) {
 
 
 	// Display our different form fields when buttons are clicked
-	$('.wpml-content:not(:first)').hide();
-	$('.wpml-nav').click(function(e) {
-
-		// Remove any messages that currently exist.
-		$('.wpml-content > p.message').remove();
-
-		// Get the link set in the href attribute for the currently clicked element.
-		var form_field = $(this).attr('href');
-
-		$('.wpml-content').hide();
-		$('.section-container ' + form_field).fadeIn('fast');
-
+	$( '.wpml-content:not( :first )' ).hide();
+	$( '.wpml-nav' ).click( function( e ) {
 		e.preventDefault();
 
-		if(form_field === '#login') {
-			$(this).parent().fadeOut().removeClass().addClass('hide-login');
-		} else {
-			$('a[href="#login"]').parent().removeClass().addClass('inline').fadeIn();
-		}
+		// Remove any messages that currently exist.
+		$( '.wpml-content > p.message' ).remove();
+
+		// Get the link set in the href attribute for the currently clicked element.
+		var form_field = $( this ).attr( 'href' );
+
+		$( '.wpml-content' ).hide();
+		$( '.section-container ' + form_field ).fadeIn( 'fast' );
+
+		// Hide the currently clicked setting and show others that are hidden
+		$( '#additional-settings' ).find( '.hide' ).fadeIn().removeClass( 'hide' );
+		$( this ).parent().fadeOut().removeClass().addClass( 'hide' );
 	});
 
 

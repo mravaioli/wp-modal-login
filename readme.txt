@@ -68,6 +68,7 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 == Changelog ==
 = 2.1b-071413 =
 * Added more room for customization for developers by adding a handful of apply_filter() instances throughout the plugin.
+* Fixed links in modal window to disappear when viewing it's section (ie. clicking register will remove that link when the form changes).
 
 = 2.0.5 =
 * Fixed overly sanitized passwords when logging in (it was stripping out special characters).
