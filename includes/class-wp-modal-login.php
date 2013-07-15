@@ -551,16 +551,18 @@
 
 		/**
 		 * Outputs the HTML for our login link.
-		 * @param String $login_text  The text for the login link. Default 'Login'.
-		 * @param String $logout_text The text for the logout link. Default 'Logout'.
-		 * @param String $logout_url  The url to redirect to when users logout. Empty by default.
-		 * @param Bool   $show_admin  The setting to display the link to the admin area when logged in.
+		 * @param String  $login_text  The text for the login link. Default 'Login'.
+		 * @param String  $logout_text The text for the logout link. Default 'Logout'.
+		 * @param String  $logout_url  The url to redirect to when users logout. Empty by default.
+		 * @param Boolean $show_admin  The setting to display the link to the admin area when logged in.
+		 * @param Array   $class 		 Add in custom classes to the login/logout links. (added v2.1)
+	 	 * @param Boolean $show_btn	 Apply a default button as defined in the admin options. (added v2.1)
 		 * @return HTML
 		 *
-		 * @version 1.1
+		 * @version 1.2
 		 * @since 1.0
 		 */
-		public function modal_login_btn( $login_text = 'Login', $logout_text = 'Logout', $logout_url = '', $show_admin = 1 ) {
+		public function modal_login_btn( $login_text = 'Login', $logout_text = 'Logout', $logout_url = '', $show_admin = true, $class = array(), $show_btn = false ) {
 			// Check if we have an over riding logout redirection set. Other wise, default to the home page.
 			if ( isset( $logout_url ) && $logout_url == '' )
 				$logout_url = home_url();
@@ -568,13 +570,39 @@
 			// Setup a filterable "view admin" link
 			$view_admin = apply_filters( 'geissinger_view_admin_link', __( 'View Admin', 'geissinger-wpml' ) );
 
+			$class = array(
+				'login' => 'login-btn',
+				'logout' => 'logout-btn',
+				'global' => 'button',
+			);
+
+			// Parse out our array of classes
+			if ( is_array( $class ) && ! empty( $class ) ) {
+
+				// Contain our login classes in a variable
+				if ( isset( $class['login'] ) && ! empty( $class['login'] ) )
+					$login_class = ' ' . $class['login'];
+
+				// Contain our logout classes in a variable;
+				if ( isset( $class['logout'] ) && ! empty( $class['logout'] ) )
+					$logout_class = ' ' . $class['logout'];
+
+				// Get all of our global classes and append them to the login and logout classes
+				if ( isset( $class['global'] ) && ! empty( $class['global'] ) ) {
+					$global_class = $class['global'];
+
+					$login_class = ' ' . $global_class . $login_class;
+					$logout_class = ' ' . $global_class . $logout_class;
+				}
+			}
+
 			// Is the user logged in? If so, serve them the logout button, else we'll show the login button.
 			if ( is_user_logged_in() ) {
-				$link = '<a href="' . wp_logout_url( esc_url( $logout_url ) ) . '" class="logout wpml-btn">' . sprintf( _x( '%s', 'Logout Text', 'geissinger-wpml' ), sanitize_text_field( $logout_text ) ) . '</a>';
+				$link = '<a href="' . wp_logout_url( esc_url( $logout_url ) ) . '" class="logout wpml-btn' . $logout_class . '">' . sprintf( _x( '%s', 'Logout Text', 'geissinger-wpml' ), sanitize_text_field( $logout_text ) ) . '</a>';
 				if ( $show_admin )
 					$link .= ' | <a href="' . esc_url( admin_url() ) . '">' . esc_attr( $view_admin ) . '</a>';
 			} else {
-				$link = '<a href="#login-box" class="login wpml-btn login-window">' . sprintf( _x( '%s', 'Login Text', 'geissinger-wpml' ), sanitize_text_field( $login_text ) ) . '</a></li>';
+				$link = '<a href="#login-box" class="login wpml-btn login-window' . $login_class . '">' . sprintf( _x( '%s', 'Login Text', 'geissinger-wpml' ), sanitize_text_field( $login_text ) ) . '</a></li>';
 			}
 
 			return $link;
@@ -591,15 +619,19 @@
 		 */
 		function modal_login_btn_shortcode( $atts ) {
 			extract( shortcode_atts( array(
-				'login_text'  => 'Login',
-				'logout_text' => 'Logout',
-				'logout_url'  => home_url(),
+				'login_text'   => 'Login',
+				'logout_text'  => 'Logout',
+				'logout_url'   => home_url(),
+				'show_admin'   => false,
+				'login_class'  => '',
+				'logout_class' => '',
+				'show_btn'		=> false,
 			), $atts ) );
 
 			if ( is_user_logged_in() ) {
-				$link = '<a href="' . wp_logout_url( esc_url( $logout_url ) ) . '" class="logout wpml-btn">' . sprintf( _x( '%s', 'Shortcode Logout Text', 'geissinger-wpml' ), sanitize_text_field( $logout_text ) ) . '</a>';
+				$link = '<a href="' . wp_logout_url( esc_url( $logout_url ) ) . '" class="logout wpml-btn ' . $login_class . '">' . sprintf( _x( '%s', 'Shortcode Logout Text', 'geissinger-wpml' ), sanitize_text_field( $logout_text ) ) . '</a>';
 			} else {
-				$link = '<a href="#login-box" class="login wpml-btn login-window">' . sprintf( _x( '%s', 'Shortcode Login Text', 'geissinger-wpml' ), sanitize_text_field( $login_text ) ) . '</a></li>';
+				$link = '<a href="#login-box" class="login wpml-btn login-window ' . $logout_class . '">' . sprintf( _x( '%s', 'Shortcode Login Text', 'geissinger-wpml' ), sanitize_text_field( $login_text ) ) . '</a></li>';
 			}
 
 			return $link;

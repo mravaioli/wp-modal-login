@@ -53,21 +53,23 @@
 
 	/**
 	 * Create a helper function for adding our login goodness
-	 * @param String $login_text  The text for the login link. Default 'Login'.
-	 * @param String $logout_text The text for the logout link. Default 'Logout'.
-	 * @param String $logout_url  The url to redirect to when users logout. Empty by default.
-	 * @param Bool   $show_admin  The setting to display the link to the admin area when logged in.
+	 * @param String 	$login_text  The text for the login link. Default 'Login'.
+	 * @param String 	$logout_text The text for the logout link. Default 'Logout'.
+	 * @param String 	$logout_url  The url to redirect to when users logout. Empty by default.
+	 * @param Boolean $show_admin  The setting to display the link to the admin area when logged in.
+	 * @param Array   $class 		 Add in custom classes to the login/logout links.
+	 * @param Boolean $show_btn	 Apply a default button as defined in the admin options.
 	 * @return HTML
 	 *
-	 * @version 1.0
+	 * @version 1.1
 	 * @since 2.0
 	 */
-	function add_modal_login_button( $login_text = 'Login', $logout_text = 'Logout', $logout_url = '', $show_admin = true ) {
+	function add_modal_login_button( $login_text = 'Login', $logout_text = 'Logout', $logout_url = '', $show_admin = true, $class = array(), $show_btn = false ) {
 		global $wp_modal_login_class;
 
 		// Make sure our class is really truly loaded.
 		if ( isset( $wp_modal_login_class ) ) {
-			echo $wp_modal_login_class->modal_login_btn( $login_text, $logout_text, $logout_url, $show_admin );
+			echo $wp_modal_login_class->modal_login_btn( $login_text, $logout_text, $logout_url, $show_admin, $class, $show_btn );
 		} else {
 			echo __( 'ERROR: WP Modal Login class not loaded.', 'geissinger-wpml' );
 		}
