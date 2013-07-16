@@ -5,13 +5,13 @@
 	 *
 	 * This contains all the cool jazz that makes this plugin work.
 	 *
-	 * @version 2.0.5
+	 * @version 2.0.5.1
 	 * @since 1.0
 	 */
 	class Geissinger_WP_Modal_Login {
 
 		// Set the version number
-		public $plugin_version = '2.0.5';
+		public $plugin_version = '2.0.5.1';
 
 
 		/**
