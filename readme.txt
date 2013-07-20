@@ -4,7 +4,7 @@ Donate link:
 Tags: modal login, popup login, pop-up login
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 2.0.5.1
+Stable tag: 2.0.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,9 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 `<?php $modal_login = new Geissinger_WP_Modal_Login; echo $modal_login; ?>`
 
 == Changelog ==
+= 2.0.5.2 =
+* Fixed an issue where users could still register even though its been disabled. (Reported by @grcrane).
+
 = 2.0.5.1 =
 * Added Portuguese translation as provided by Debora Bossois (@deborazb).
 

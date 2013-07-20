@@ -67,6 +67,10 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 
 Changelog
 =========
+2.0.5.2
+-------
+* Fixed an issue where users could still register even though its been disabled. (Reported by @grcrane).
+
 2.0.5.1
 --------
 * Added Portuguese translation as provided by Debora Bossois (@deborazb).
