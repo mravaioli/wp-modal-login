@@ -67,11 +67,29 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 
 Changelog
 =========
-= 2.1a-072313 =
+2.1a-072313
+-----------
 * Added - more room for customization for developers by adding a handful of apply_filter() instances throughout the plugin. These are also available via the admin area (coming soon).
 * Fixed - links in modal window to disappear when viewing it's section (ie. clicking register will remove that link when the form changes).
 * Fixed - form field selection when using tab to navigate the form fields.
 * Improvement - Beefed security by adding empty index.php files in all directories for servers that allow directory listings.
+
+2.0.5.2
+-------
+* Fixed an issue where users could still register even though its been disabled. (Reported by @grcrane).
+
+2.0.5.1
+--------
+* Added Portuguese translation as provided by Debora Bossois (@deborazb).
+
+2.0.5
+-----
+* Fixed overly sanitized passwords when logging in (it was stripping out special characters).
+* Added Spanish translation from David Portillo (wethinkapp.com).
+
+2.0.4
+-----
+* Fixed a display issue in the admin page. All settings showing as '01'.
 
 2.0.3
 -----

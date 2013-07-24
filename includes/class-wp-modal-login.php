@@ -6,6 +6,7 @@
 	 * This contains all the cool jazz that makes this plugin work.
 	 *
 	 * @version 2.1a-072313
+	 * @since 1.0
 	 */
 	class Geissinger_WP_Modal_Login {
 
@@ -364,8 +365,9 @@
 		 * @since 1.0
 		 */
 		public function login_form() {
-			global $user_ID, $user_identity;
+			global $user_ID, $user_identity, $wpml_settings;
 			get_currentuserinfo();
+			$multisite_reg = get_site_option( 'registration' );
 
 			// Setup filterable titles
 			$login_title     	  = apply_filters( 'geissinger_login_title', __( 'Login', 'geissinger-wpml' ) );
@@ -435,43 +437,47 @@
 						</div><!--[END #login]-->
 
 						<?php // Registration form ?>
-						<div id="register" class="wpml-content" style="display:none;">
+						<?php if ( ! isset( $wpml_settings['remove-reg'] ) ) {
+							if ( ( get_option( 'users_can_register' ) && ! is_multisite() ) || ( $multisite_reg == 'all' || $multisite_reg == 'blog' || $multisite_reg == 'user' ) ) : ?>
+								<div id="register" class="wpml-content" style="display:none;">
 
-							<h2><?php echo $register_title; ?></h2>
+									<h2><?php echo $register_title; ?></h2>
 
-							<?php do_action( 'before_wpml_register' ); ?>
+									<?php do_action( 'before_wpml_register' ); ?>
 
-							<form action="register" method="post" id="form" class="group" name="loginform">
+									<form action="register" method="post" id="form" class="group" name="loginform">
 
-								<?php do_action( 'inside_wpml_register_first' ); ?>
+										<?php do_action( 'inside_wpml_register_first' ); ?>
 
-								<p>
-									<label class="field-titles" for="reg_user"><?php echo esc_attr( $username_label ); ?></label>
-									<input type="text" name="user_login" id="reg_user" class="input" value="<?php if ( isset( $user_login ) ) echo esc_attr( stripslashes( $user_login ) ); ?>" size="20" />
-								</p>
+										<p>
+											<label class="field-titles" for="reg_user"><?php echo esc_attr( $username_label ); ?></label>
+											<input type="text" name="user_login" id="reg_user" class="input" value="<?php if ( isset( $user_login ) ) echo esc_attr( stripslashes( $user_login ) ); ?>" size="20" />
+										</p>
 
-								<p>
-									<label class="field-titles" for="reg_email"><?php echo esc_attr( $email_label ); ?></label>
-									<input type="text" name="user_email" id="reg_email" class="input" value="<?php if ( isset( $user_email ) ) echo esc_attr( stripslashes( $user_email ) ); ?>" size="20" />
-								</p>
+										<p>
+											<label class="field-titles" for="reg_email"><?php echo esc_attr( $email_label ); ?></label>
+											<input type="text" name="user_email" id="reg_email" class="input" value="<?php if ( isset( $user_email ) ) echo esc_attr( stripslashes( $user_email ) ); ?>" size="20" />
+										</p>
 
-								<?php do_action( 'register_form' ); ?>
+										<?php do_action( 'register_form' ); ?>
 
-								<p class="submit">
+										<p class="submit">
 
-									<?php do_action( 'inside_wpml_register_submit' ); ?>
+											<?php do_action( 'inside_wpml_register_submit' ); ?>
 
-									<input type="submit" name="user-sumbit" id="user-submit" class="button button-primary button-large" value="<?php echo esc_attr( $register_btn_text ); ?>" />
-									<input type="hidden" name="register" value="true" />
-									<?php wp_nonce_field( 'ajax-form-nonce', 'security' ); ?>
+											<input type="submit" name="user-sumbit" id="user-submit" class="button button-primary button-large" value="<?php echo esc_attr( $register_btn_text ); ?>" />
+											<input type="hidden" name="register" value="true" />
+											<?php wp_nonce_field( 'ajax-form-nonce', 'security' ); ?>
 
-								</p><!--[END .submit]-->
+										</p><!--[END .submit]-->
 
-								<?php do_action( 'inside_wpml_register_last' ); ?>
+										<?php do_action( 'inside_wpml_register_last' ); ?>
 
-							</form>
+									</form>
 
-						</div><!--[END #register]-->
+								</div><!--[END #register]-->
+							<?php endif;
+						} ?>
 
 						<?php // Forgotten Password ?>
 						<div id="forgotten" class="wpml-content" style="display:none;">

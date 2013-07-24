@@ -72,6 +72,12 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 * Fixed - form field selection when using tab to navigate the form fields.
 * Improvement - Beefed security by adding empty index.php files in all directories for servers that allow directory listings.
 
+= 2.0.5.2 =
+* Fixed an issue where users could still register even though its been disabled. (Reported by @grcrane).
+
+= 2.0.5.1 =
+* Added Portuguese translation as provided by Debora Bossois (@deborazb).
+
 = 2.0.5 =
 * Fixed overly sanitized passwords when logging in (it was stripping out special characters).
 * Added Spanish translation from David Portillo (wethinkapp.com).
