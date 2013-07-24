@@ -118,7 +118,9 @@
 			opacity:.8;
 		}
 	}
-	.register-btn, .forgotten-btn { border-right:1px solid $default_highlight; }
+	.three-links {
+		.register-btn, .forgotten-btn { border-right:1px solid $default_highlight; }
+	}
 }
 
 

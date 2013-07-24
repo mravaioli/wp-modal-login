@@ -67,9 +67,11 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 
 Changelog
 =========
-= 2.1b-071413 =
-* Added more room for customization for developers by adding a handful of apply_filter() instances throughout the plugin.
-* Fixed links in modal window to disappear when viewing it's section (ie. clicking register will remove that link when the form changes).
+= 2.1a-072313 =
+* Added - more room for customization for developers by adding a handful of apply_filter() instances throughout the plugin. These are also available via the admin area (coming soon).
+* Fixed - links in modal window to disappear when viewing it's section (ie. clicking register will remove that link when the form changes).
+* Fixed - form field selection when using tab to navigate the form fields.
+* Improvement - Beefed security by adding empty index.php files in all directories for servers that allow directory listings.
 
 2.0.3
 -----

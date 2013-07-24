@@ -133,5 +133,7 @@
 			color:$theme_1_highlight_rgba;
 		}
 	}
-	.register-btn, .forgotten-btn { border-right:1px solid $theme_1_highlight_rgba; }
+	.three-links {
+		.register-btn, .forgotten-btn { border-right:1px solid $theme_1_highlight_rgba; }
+	}
 }

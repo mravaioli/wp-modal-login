@@ -5,12 +5,12 @@
 	 *
 	 * This contains all the cool jazz that makes this plugin work.
 	 *
-	 * @version 2.1b-071413
+	 * @version 2.1a-072313
 	 */
 	class Geissinger_WP_Modal_Login {
 
 		// Set the version number
-		public $plugin_version = '2.1b-071413';
+		public $plugin_version = '2.1a-072313';
 
 
 		/**
@@ -51,7 +51,7 @@
 		 * Add all of our scripts and styles with WordPress.
 		 * @return void
 		 *
-		 * @version 2.1b-071413
+		 * @version 2.1a-072313
 		 * @since 1.0
 		 */
 		public function print_resources() {
@@ -360,7 +360,7 @@
 		 *          inside_wpml_form_last		Add items at the end of the form wrapper after the submit button.
 		 *          after_wpml_form				Add items after the form iteself.
 		 *
-		 * @version 2.1b-071413
+		 * @version 2.1a-072313
 		 * @since 1.0
 		 */
 		public function login_form() {
@@ -405,12 +405,12 @@
 
 								<p>
 									<label class="field-titles" for="login_user"><?php echo esc_attr( $username_label ); ?></label>
-									<input type="text" name="log" id="login_user" class="input" value="<?php if ( isset( $user_login ) ) echo esc_attr( $user_login ); ?>" size="20" tabindex="1" />
+									<input type="text" name="log" id="login_user" class="input" value="<?php if ( isset( $user_login ) ) echo esc_attr( $user_login ); ?>" size="20" />
 								</p>
 
 								<p>
 									<label class="field-titles" for="login_pass"><?php echo esc_attr( $password_label ); ?></label>
-									<input type="password" name="pwd" id="login_pass" class="input" value="" size="20" tabindex="2" />
+									<input type="password" name="pwd" id="login_pass" class="input" value="" size="20" />
 								</p>
 
 								<?php do_action( 'login_form' ); ?>
@@ -447,12 +447,12 @@
 
 								<p>
 									<label class="field-titles" for="reg_user"><?php echo esc_attr( $username_label ); ?></label>
-									<input type="text" name="user_login" id="reg_user" class="input" value="<?php if ( isset( $user_login ) ) echo esc_attr( stripslashes( $user_login ) ); ?>" size="20" tabindex="1" />
+									<input type="text" name="user_login" id="reg_user" class="input" value="<?php if ( isset( $user_login ) ) echo esc_attr( stripslashes( $user_login ) ); ?>" size="20" />
 								</p>
 
 								<p>
 									<label class="field-titles" for="reg_email"><?php echo esc_attr( $email_label ); ?></label>
-									<input type="text" name="user_email" id="reg_email" class="input" value="<?php if ( isset( $user_email ) ) echo esc_attr( stripslashes( $user_email ) ); ?>" size="20" tabindex="3" />
+									<input type="text" name="user_email" id="reg_email" class="input" value="<?php if ( isset( $user_email ) ) echo esc_attr( stripslashes( $user_email ) ); ?>" size="20" />
 								</p>
 
 								<?php do_action( 'register_form' ); ?>
@@ -518,24 +518,25 @@
 		 * Adds some additional fields to the login_form(). Hooked through 'after_wpml_form'.
 		 * @return void
 		 *
-		 * @version 2.1b-071413
+		 * @version 2.1a-072313
 		 * @since 2.0
 		 */
 		public function additional_options() {
 			global $wpml_settings;
 
 			$multisite_reg  = get_site_option( 'registration' );
+			$link_count     = ( ! isset( $wpml_settings['remove-reg'] ) ) ? 'two-links' : 'three-links';
 
 			// Setup filterable button titles
 			$register_link  = apply_filters( 'geissinger_register_link', __( 'Register', 'geissinger-wpml' ) );
 			$forgotten_link = apply_filters( 'geissinger_forgotten_link', __( 'Lost your password?', 'geissinger-wpml' ) );
 			$login_link 	 = apply_filters( 'geissinger_login_link', __( 'Back to Login', 'geissinger-wpml' ) );
 
-			echo '<div id="additional-settings">';
+			echo '<div id="additional-settings" class="' . $link_count . '">';
 
 				// Check if we have disabled this via the admin options first.
 				if ( ! isset( $wpml_settings['remove-reg'] ) ) {
-					if ( (get_option( 'users_can_register' ) && ! is_multisite() ) || ( $multisite_reg == 'all' || $multisite_reg == 'blog' || $multisite_reg == 'user' ) )
+					if ( ( get_option( 'users_can_register' ) && ! is_multisite() ) || ( $multisite_reg == 'all' || $multisite_reg == 'blog' || $multisite_reg == 'user' ) )
 						echo '<span class="register-btn footer-links"><a href="#register" class="wpml-nav">' . esc_attr( $register_link ) . '</a></span>';
 				}
 
@@ -557,7 +558,7 @@
 	 	 * @param Boolean $show_btn	 Apply a default button as defined in the admin options. (added v2.1)
 		 * @return HTML
 		 *
-		 * @version 2.1b-071413
+		 * @version 2.1a-072313
 		 * @since 1.0
 		 */
 		public function modal_login_btn( $login_text = 'Login', $logout_text = 'Logout', $logout_url = '', $show_admin = true, $class = array(), $show_btn = false ) {
@@ -612,7 +613,7 @@
 		 * @param  Array $atts Contains all or any attributes used on the shortcode.
 		 * @return String
 		 *
-		 * @version 2.1b-071413
+		 * @version 2.1a-072313
 		 * @since 1.0
 		 */
 		function modal_login_btn_shortcode( $atts ) {
