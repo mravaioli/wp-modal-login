@@ -11,7 +11,7 @@
 	class Geissinger_WP_Modal_Login {
 
 		// Set the version number
-		public $plugin_version = '2.0.5.2';
+		public $plugin_version = '2.0.6';
 
 
 		/**
@@ -60,7 +60,6 @@
 
 			$theme = $wpml_settings['modal-theme'];
 
-
 			wp_enqueue_style( 'wpml-styles', plugins_url( 'css/wp-modal-login.css', dirname( __FILE__ ) ), null, $this->plugin_version, 'screen' );
 
 			// Load the right Modal Theme
@@ -89,13 +88,13 @@
 		 * Display any custom CSS that may be entered into the admin area
 		 * @return String
 		 *
-		 * @version 1.0
+		 * @version 1.0.1
 		 * @since 2.0
 		 */
 		public function print_custom_css() {
 			global $wpml_settings;
 
-			echo '<style text="text/css">' . $wpml_settings['custom-css'] . "</style>\n";
+			echo '<style text="text/css">' . sanitize_text_field( $wpml_settings['custom-css'] ) . "</style>\n";
 		}
 
 
@@ -371,25 +370,25 @@
 
 								<p>
 									<label class="field-titles" for="login_user"><?php _e( 'Username', 'geissinger-wpml' ); ?></label>
-									<input type="text" name="log" id="login_user" class="input" value="<?php if ( isset( $user_login ) ) echo esc_attr( $user_login ); ?>" size="20" tabindex="1" />
+									<input type="text" name="log" id="login_user" class="input" value="<?php if ( isset( $user_login ) ) echo esc_attr( $user_login ); ?>" size="20" />
 								</p>
 
 								<p>
 									<label class="field-titles" for="login_pass"><?php _e( 'Password', 'geissinger-wpml' ); ?></label>
-									<input type="password" name="pwd" id="login_pass" class="input" value="" size="20" tabindex="2" />
+									<input type="password" name="pwd" id="login_pass" class="input" value="" size="20" />
 								</p>
 
 								<?php do_action( 'login_form' ); ?>
 
 								<p id="forgetmenot">
-									<label class="forgetmenot-label" for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" /> <?php esc_attr_e( 'Remember Me', 'geissinger-wpml' ); ?></label>
+									<label class="forgetmenot-label" for="rememberme"><input name="rememberme" type="checkbox" id="rememberme" value="forever" /> <?php _e( 'Remember Me', 'geissinger-wpml' ); ?></label>
 								</p>
 
 								<p class="submit">
 
 									<?php do_action( 'inside_wpml_login_submit' ); ?>
 
-									<input type="submit" name="wp-sumbit" id="wp-submit" class="button button-primary button-large" value="<?php esc_attr_e( 'Log In', 'geissinger-wpml' ); ?>" />
+									<input type="submit" name="wp-sumbit" id="wp-submit" class="button button-primary button-large" value="<?php _e( 'Log In', 'geissinger-wpml' ); ?>" />
 									<input type="hidden" name="login" value="true" />
 									<?php wp_nonce_field( 'ajax-form-nonce', 'security' ); ?>
 
@@ -415,12 +414,12 @@
 
 										<p>
 											<label class="field-titles" for="reg_user"><?php _e( 'Username', 'geissinger-wpml' ); ?></label>
-											<input type="text" name="user_login" id="reg_user" class="input" value="<?php if ( isset( $user_login ) ) echo esc_attr( stripslashes( $user_login ) ); ?>" size="20" tabindex="1" />
+											<input type="text" name="user_login" id="reg_user" class="input" value="<?php if ( isset( $user_login ) ) echo esc_attr( stripslashes( $user_login ) ); ?>" size="20" />
 										</p>
 
 										<p>
 											<label class="field-titles" for="reg_email"><?php _e( 'Email', 'geissinger-wpml' ); ?></label>
-											<input type="text" name="user_email" id="reg_email" class="input" value="<?php if ( isset( $user_email ) ) echo esc_attr( stripslashes( $user_email ) ); ?>" size="20" tabindex="3" />
+											<input type="text" name="user_email" id="reg_email" class="input" value="<?php if ( isset( $user_email ) ) echo esc_attr( stripslashes( $user_email ) ); ?>" size="20" />
 										</p>
 
 										<?php do_action( 'register_form' ); ?>

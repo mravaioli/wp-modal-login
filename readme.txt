@@ -4,7 +4,7 @@ Donate link:
 Tags: modal login, popup login, pop-up login
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 2.0.5.2
+Stable tag: 2.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,11 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 `<?php $modal_login = new Geissinger_WP_Modal_Login; echo $modal_login; ?>`
 
 == Changelog ==
+= 2.0.6 =
+* Fixed permanent hang on reseting password with "Forgotten Password".
+* Increased security in multiple areas of the plugin.
+* Fixed tabbing in forms so they actually move your cursor in the proper order.
+
 = 2.0.5.2 =
 * Fixed an issue where users could still register even though its been disabled. (Reported by @grcrane).
 

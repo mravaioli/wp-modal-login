@@ -131,7 +131,7 @@ jQuery(document).ready(function($) {
 				data: {
 					'action'    : 'ajaxlogin', // Calls our wp_ajax_nopriv_ajaxlogin
 					'username'  : $('#form #forgot_login').val(),
-					'forgotten' : $('#form input[name="register"]').val(),
+					'forgotten' : $('#form input[name="forgotten"]').val(),
 					'security'  : $('#form #security').val()
 				},
 				success: function(results) {

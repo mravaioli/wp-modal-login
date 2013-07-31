@@ -36,11 +36,11 @@
 		function widget( $args, $instance ) {
 			extract( $args, EXTR_SKIP );
 
-			$widget_title = empty( $instance['widget-title'] ) ? '' : apply_filters( 'widget-title', $instance['widget-title'] );
-			$login_text   = empty( $instance['login-text'] )   ? '' : apply_filters( 'login-text',   $instance['login-text'] );
-			$logout_text  = empty( $instance['logout-text'] )  ? '' : apply_filters( 'logout-text',  $instance['logout-text'] );
-			$logout_url   = empty( $instance['logout-url'] )   ? '' : apply_filters( 'logout-url',   $instance['logout-url'] );
-			$show_admin   = empty( $instance['show-admin'])    ? '' : apply_filters( 'show-admin',   $instance['show-admin']);
+			$widget_title = ( ! empty( $instance['widget-title'] ) ) ? apply_filters( 'widget-title', $instance['widget-title'] ) : '';
+			$login_text   = ( ! empty( $instance['login-text'] ) )   ? apply_filters( 'login-text',   $instance['login-text'] )   : '';
+			$logout_text  = ( ! empty( $instance['logout-text'] ) )  ? apply_filters( 'logout-text',  $instance['logout-text'] )  : '';
+			$logout_url   = ( ! empty( $instance['logout-url'] ) )   ? apply_filters( 'logout-url',   $instance['logout-url'] )   : '';
+			$show_admin   = ( ! empty( $instance['show-admin'] ) )   ? apply_filters( 'show-admin',   $instance['show-admin'] )   : false;
 
 			echo $before_widget;
 

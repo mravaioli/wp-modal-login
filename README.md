@@ -67,6 +67,13 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 
 Changelog
 =========
+2.0.6
+-----
+* Fixed permanent hang on reseting password with "Forgotten Password".
+* Fixed tabbing in forms so they actually move your cursor in the proper order.
+* Fixed some minor display issues within the widget.
+* Increased security in multiple areas of the plugin.
+
 2.0.5.2
 -------
 * Fixed an issue where users could still register even though its been disabled. (Reported by @grcrane).
