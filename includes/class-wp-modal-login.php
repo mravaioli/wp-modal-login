@@ -5,13 +5,13 @@
 	 *
 	 * This contains all the cool jazz that makes this plugin work.
 	 *
-	 * @version 2.1a-072313
+	 * @version 2.1a-080413
 	 * @since 1.0
 	 */
 	class Geissinger_WP_Modal_Login {
 
 		// Set the version number
-		public $plugin_version = '2.1a-072313';
+		public $plugin_version = '2.1a-080413';
 
 
 		/**
@@ -52,7 +52,7 @@
 		 * Add all of our scripts and styles with WordPress.
 		 * @return void
 		 *
-		 * @version 2.1a-072313
+		 * @version 2.1a-080413
 		 * @since 1.0
 		 */
 		public function print_resources() {
@@ -361,7 +361,7 @@
 		 *          inside_wpml_form_last		Add items at the end of the form wrapper after the submit button.
 		 *          after_wpml_form				Add items after the form iteself.
 		 *
-		 * @version 2.1a-072313
+		 * @version 2.1a-080413
 		 * @since 1.0
 		 */
 		public function login_form() {
@@ -524,7 +524,7 @@
 		 * Adds some additional fields to the login_form(). Hooked through 'after_wpml_form'.
 		 * @return void
 		 *
-		 * @version 2.1a-072313
+		 * @version 2.1a-080413
 		 * @since 2.0
 		 */
 		public function additional_options() {
@@ -564,7 +564,7 @@
 	 	 * @param Boolean $show_btn	 Apply a default button as defined in the admin options. (added v2.1)
 		 * @return HTML
 		 *
-		 * @version 2.1a-072313
+		 * @version 2.1a-080413
 		 * @since 1.0
 		 */
 		public function modal_login_btn( $login_text = 'Login', $logout_text = 'Logout', $logout_url = '', $show_admin = true, $class = array(), $show_btn = false ) {
@@ -619,7 +619,7 @@
 		 * @param  Array $atts Contains all or any attributes used on the shortcode.
 		 * @return String
 		 *
-		 * @version 2.1a-072313
+		 * @version 2.1a-080413
 		 * @since 1.0
 		 */
 		function modal_login_btn_shortcode( $atts ) {

@@ -4,7 +4,7 @@ Donate link:
 Tags: modal login, popup login, pop-up login
 Requires at least: 3.5
 Tested up to: 3.6
-Stable tag: 2.1a-072313
+Stable tag: 2.1a-080413
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,11 +66,13 @@ The new PHP function accepts 4 arguments, each described below in greater detail
 `<?php $modal_login = new Geissinger_WP_Modal_Login; echo $modal_login; ?>`
 
 == Changelog ==
-= 2.1a-072313 =
+= 2.1a-080413 =
 * Added - more room for customization for developers by adding a handful of apply_filter() instances throughout the plugin. These are also available via the admin area (coming soon).
 * Fixed - links in modal window to disappear when viewing it's section (ie. clicking register will remove that link when the form changes).
 * Fixed - form field selection when using tab to navigate the form fields.
 * Improvement - Beefed security by adding empty index.php files in all directories for servers that allow directory listings.
+* Improvement - Reworked Ajax login so redirect should work smoother than before.
+* Improvement - Beefed up theme styles so other themes do not interfere.
 
 = 2.0.5.2 =
 * Fixed an issue where users could still register even though its been disabled. (Reported by @grcrane).

@@ -31,6 +31,7 @@ jQuery( document ).ready( function( $ ) {
 	$( '.close-btn' ).click( function() {
 		$( '#overlay, .login-popup ').fadeOut( '300m', function() {
 			$( '#overlay' ).remove();
+			$( '.login-popup .message' ).slideUp().remove();
 		});
 
 		return false;
@@ -91,12 +92,18 @@ jQuery( document ).ready( function( $ ) {
 					// Check the returned data message. If we logged in successfully, then let our users know and remove the modal window.
 					if ( results.loggedin === true ) {
 						$( '.wpml-content > p.message' ).removeClass( 'notice' ).addClass( 'success' ).text( results.message ).show();
-						$( '#overlay, .login-popup' ).delay( 5000 ).fadeOut( '300m', function() {
+						$( '#overlay, .login-popup' ).delay( 1000 ).fadeOut( '300m', function() {
 							$( '#overlay' ).remove();
 						});
-						window.location.href = wpml_script.redirecturl;
 					} else {
 						$( '.wpml-content > p.message' ).removeClass( 'notice' ).addClass( 'error' ).text( results.message ).show();
+					}
+				},
+				complete: function( event ) {
+
+					// Check that we have logged in.
+					if ( event.responseJSON.loggedin === true ) {
+						window.location.href = wpml_script.redirecturl;
 					}
 				}
 			});
@@ -115,7 +122,7 @@ jQuery( document ).ready( function( $ ) {
 				success: function( results ) {
 					if ( results.registerd === true ) {
 						$( '.wpml-content > p.message' ).removeClass( 'notice' ).addClass( 'success' ).text( results.message ).show();
-						$( '#register #form input:not(#user-submit)' ).val('');
+						$( '#register #form input:not(#user-submit)' ).val( '' );
 					} else {
 						$( '.wpml-content > p.message' ).removeClass( 'notice' ).addClass( 'error' ).text( results.message ).show();
 					}
@@ -135,7 +142,7 @@ jQuery( document ).ready( function( $ ) {
 				success: function(results) {
 					if ( results.reset === true ) {
 						$( '.wpml-content > p.message' ).removeClass( 'notice' ).addClass( 'success' ).text( results.message ).show();
-						$( '#forgotten #form input:not( #user-submit )' ).val('');
+						$( '#forgotten #form input:not( #user-submit )' ).val( '' );
 					} else {
 						$( '.wpml-content > p.message' ).removeClass( 'notice' ).addClass( 'error' ).text( results.message ).show();
 					}
